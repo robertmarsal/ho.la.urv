@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="brand">Ho.La. URV</string>
+    <string name="cd:logo">Ho.La. URV logo</string>
+    <string name="username">User</string>
+    <string name="password">Password</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
