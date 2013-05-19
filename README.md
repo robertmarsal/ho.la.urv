@@ -1,4 +1,4 @@
-**Ho.La. URV** is an android application for checking the presence management system of the Rovira i Virgily Universisy
+**Ho.La. URV** is an android application for checking the presence management system of the Rovira i Virgily University
 
 #### License
 The MIT License (MIT)
