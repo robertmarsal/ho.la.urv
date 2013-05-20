@@ -43,6 +43,7 @@
 	        android:drawablePadding="7dp"
 	        android:hint="@string/username"
 	        android:inputType="textPersonName"
+	        android:background="@drawable/edittext_background"
 	        android:textColorHint="@color/urvGray" >
 
 		</EditText>  
@@ -53,11 +54,11 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="33sp"
 	        android:layout_marginRight="33sp"
-	        android:layout_marginTop="-8sp"
 	        android:drawableLeft="@drawable/lock"
 	        android:drawablePadding="7dp"
 	        android:hint="@string/password"
 	        android:inputType="textPassword"
+	        android:background="@drawable/edittext_background"
 	        android:textColorHint="@color/urvGray" >
 
 		</EditText>  
