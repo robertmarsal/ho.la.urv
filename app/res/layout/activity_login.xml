@@ -29,22 +29,23 @@
 	        android:id="@+id/brand"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="13dp"
 	        android:textColor="@android:color/white"
-	        android:textSize="35sp"
-	         />
+	        android:textSize="35sp" />
         
 	    <EditText
 	        android:id="@+id/username"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="6dp"
 	        android:layout_marginLeft="33sp"
 	        android:layout_marginRight="33sp"
-	        android:drawableLeft="@drawable/person"
-	        android:drawablePadding="7dp"
+	        android:background="@drawable/edittext_background"
 	        android:hint="@string/username"
 	        android:inputType="textPersonName"
-	        android:background="@drawable/edittext_background"
-	        android:textColorHint="@color/urvGray" >
+	        android:padding="6dp"
+	        android:textColorHint="@color/urvGray"
+	        android:textSize="16sp" >
 
 		</EditText>  
 
@@ -52,16 +53,27 @@
 	        android:id="@+id/password"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="6dp"
 	        android:layout_marginLeft="33sp"
 	        android:layout_marginRight="33sp"
-	        android:drawableLeft="@drawable/lock"
+	        android:background="@drawable/edittext_background"
 	        android:drawablePadding="7dp"
 	        android:hint="@string/password"
 	        android:inputType="textPassword"
-	        android:background="@drawable/edittext_background"
-	        android:textColorHint="@color/urvGray" >
+	        android:padding="6dp"
+	        android:textColorHint="@color/urvGray"
+	        android:textSize="16sp" >
 
-		</EditText>  
+		</EditText>
+
+	    <Button
+	        android:id="@+id/validateButton"
+	        android:layout_width="fill_parent"
+	        android:layout_height="40dp"
+	        android:layout_marginLeft="33dp"
+	        android:layout_marginRight="33dp"
+	        android:background="@drawable/button_background"
+	        android:text="@string/login" />
 	    
 	</LinearLayout>
 </RelativeLayout>

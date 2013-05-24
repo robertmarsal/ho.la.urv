@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="urvPink">#993366</color>
-    <color name="urvGray">#9B9B9B</color>
+    <color name="urvGray">#B2B1B0</color>
+    <color name="urvGreen">#17A166</color>
 </resources>
