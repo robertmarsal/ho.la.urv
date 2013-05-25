@@ -22,7 +22,7 @@
 	        android:id="@+id/imageView1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:contentDescription="@string/cd:logo"
+	        android:contentDescription="@string/cd_logo"
 	        android:src="@drawable/ic_launcher" />
 	        
 	    <TextView
@@ -67,7 +67,7 @@
 		</EditText>
 
 	    <Button
-	        android:id="@+id/validateButton"
+	        android:id="@+id/loginButton"
 	        android:layout_width="fill_parent"
 	        android:layout_height="40dp"
 	        android:layout_marginLeft="33dp"
