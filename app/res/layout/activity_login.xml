@@ -70,10 +70,19 @@
 	        android:id="@+id/loginButton"
 	        android:layout_width="fill_parent"
 	        android:layout_height="40dp"
+	        android:layout_marginBottom="6dp"
 	        android:layout_marginLeft="33dp"
 	        android:layout_marginRight="33dp"
 	        android:background="@drawable/button_background"
-	        android:text="@string/login" />
+	        android:text="@string/login"
+	        android:onClick="loginClickHandler" />
+
+	    <TextView
+	        android:id="@+id/screenLogger"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@android:color/white"
+	        android:textSize="16sp" />
 	    
 	</LinearLayout>
 </RelativeLayout>

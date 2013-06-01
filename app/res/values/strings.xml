@@ -7,5 +7,5 @@
     <string name="password">Password</string>
     <string name="login">Log in</string>
     <string name="alert_empty_credentials">Missing credentials!</string>
-
+    <string name="alert_no_network">No network connection available!</string>
 </resources>
