@@ -8,11 +8,11 @@ public class HoLaURV extends Application {
 
 	private Evalos eva;
 
-	public Evalos getEva(){
+	public Evalos getEva() {
 		return eva;
 	}
-	
-	public void setEva(Evalos eva){
-	    this.eva = eva;
+
+	public void setEva(Evalos eva) {
+		this.eva = eva;
 	}
 }
