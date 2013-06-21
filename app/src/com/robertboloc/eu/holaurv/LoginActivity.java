@@ -8,7 +8,6 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -16,18 +15,39 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.robertboloc.eu.holaurv.lib.Evalos;
 
-@EActivity
+@EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity {
 
-	@ViewById
-	TextView screenLogger;
+	@ViewById(R.id.screenLogger)
+	TextView mScreenLogger;
 
 	@ViewById(R.id.brand)
-	TextView brandTextView;
+	TextView mBrand;
+
+	@ViewById(R.id.username)
+	EditText mUsername;
+
+	@ViewById(R.id.password)
+	EditText mPassword;
+
+	@AfterViews
+	void styleBrandText() {
+		// Set brand text
+		Spannable wordToSpan = new SpannableString(getText(R.string.brand));
+		wordToSpan.setSpan(new ForegroundColorSpan(Color.BLACK), 3, 6,
+				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		mBrand.setText(wordToSpan);
+
+		// Set logo font
+		Typeface font = Typeface.createFromAsset(getAssets(),
+				"Exo-ExtraBold.ttf");
+		mBrand.setTypeface(font);
+	}
 
 	private class EvalosLoginTask extends AsyncTask<String, Void, Evalos> {
 
@@ -47,16 +67,12 @@ public class LoginActivity extends Activity {
 	}
 
 	public void loginClickHandler(View view) {
-		// Obtain user credentials from the views
-		final EditText usernameEditText = (EditText) findViewById(R.id.username);
-		final EditText passwordEditText = (EditText) findViewById(R.id.password);
-
-		String username = usernameEditText.getText().toString();
-		String password = passwordEditText.getText().toString();
+		String username = mUsername.getText().toString();
+		String password = mPassword.getText().toString();
 
 		// Check for empty credentials
 		if (username.isEmpty() || password.isEmpty()) {
-			screenLogger.setText(getText(R.string.alert_empty_credentials));
+			mScreenLogger.setText(getText(R.string.alert_empty_credentials));
 			return;
 		}
 
@@ -67,24 +83,7 @@ public class LoginActivity extends Activity {
 		if (networkInfo != null && networkInfo.isConnected()) {
 			new EvalosLoginTask().execute(username, password);
 		} else {
-			screenLogger.setText(getText(R.string.alert_no_network));
+			mScreenLogger.setText(getText(R.string.alert_no_network));
 		}
-	}
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
-
-		// Set brand text
-		Spannable wordToSpan = new SpannableString(getText(R.string.brand));
-		wordToSpan.setSpan(new ForegroundColorSpan(Color.BLACK), 3, 6,
-				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		brandTextView.setText(wordToSpan);
-
-		// Set logo font
-		Typeface font = Typeface.createFromAsset(getAssets(),
-				"Exo-ExtraBold.ttf");
-		brandTextView.setTypeface(font);
 	}
 }
