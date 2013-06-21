@@ -30,7 +30,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="13dp"
-	        android:textColor="@android:color/white"
+	        android:textColor="@color/urvWhite"
 	        android:textSize="35sp" />
         
 	    <EditText
@@ -81,7 +81,7 @@
 	        android:id="@+id/screenLogger"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textColor="@android:color/white"
+	        android:textColor="@color/urvWhite"
 	        android:textSize="16sp" />
 	    
 	</LinearLayout>

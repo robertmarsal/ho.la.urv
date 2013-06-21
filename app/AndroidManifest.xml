@@ -18,7 +18,7 @@
         android:label="@string/brand"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="com.robertboloc.eu.holaurv.LoginActivity"
+            android:name=".LoginActivity_"
             android:label="@string/brand" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.robertboloc.eu.holaurv.DisplayActivity" />
+            <activity android:name=".DisplayActivity" />
+            <activity android:name=".DisplayActivity" />
     </application>
 
 </manifest>

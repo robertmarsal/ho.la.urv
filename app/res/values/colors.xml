@@ -3,4 +3,6 @@
     <color name="urvPink">#993366</color>
     <color name="urvGray">#B2B1B0</color>
     <color name="urvGreen">#17A166</color>
+    <color name="urvWhite">#fff3f3f3</color>
+    <color name="urvBlack">#333333</color>
 </resources>

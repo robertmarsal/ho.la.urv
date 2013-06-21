@@ -16,9 +16,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
 import com.robertboloc.eu.holaurv.lib.Evalos;
 
+@EActivity
 public class LoginActivity extends Activity {
+
+	@ViewById
+	TextView screenLogger;
+
+	@ViewById(R.id.brand)
+	TextView brandTextView;
 
 	private class EvalosLoginTask extends AsyncTask<String, Void, Evalos> {
 
@@ -36,8 +45,6 @@ public class LoginActivity extends Activity {
 			startActivity(new Intent(LoginActivity.this, DisplayActivity.class));
 		}
 	}
-
-	private TextView screenLogger;
 
 	public void loginClickHandler(View view) {
 		// Obtain user credentials from the views
@@ -68,10 +75,6 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-
-		screenLogger = (TextView) findViewById(R.id.screenLogger);
-
-		final TextView brandTextView = (TextView) findViewById(R.id.brand);
 
 		// Set brand text
 		Spannable wordToSpan = new SpannableString(getText(R.string.brand));
