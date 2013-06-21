@@ -2,22 +2,22 @@ package com.robertboloc.eu.holaurv.lib;
 
 public class Entry {
 
-	private String code;
-	private String time;
+    private String code;
+    private String time;
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    public String getTime() {
+        return time;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+    public void setTime(String time) {
+        this.time = time;
+    }
 }
