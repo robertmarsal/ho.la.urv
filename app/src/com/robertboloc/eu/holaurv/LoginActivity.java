@@ -1,7 +1,6 @@
 package com.robertboloc.eu.holaurv;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -17,6 +16,7 @@ import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.SystemService;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.robertboloc.eu.holaurv.lib.Evalos;
 
@@ -34,6 +34,9 @@ public class LoginActivity extends Activity {
 
     @ViewById(R.id.password)
     EditText mPassword;
+
+    @SystemService
+    ConnectivityManager connMgr;
 
     @AfterViews
     void styleBrandText() {
@@ -77,7 +80,6 @@ public class LoginActivity extends Activity {
         }
 
         // Check for network connection
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()) {
