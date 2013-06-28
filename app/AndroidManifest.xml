@@ -26,7 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            <activity android:name=".DisplayActivity" />
+            <activity android:name=".DisplayActivity"
+                android:theme="@style/Theme.Holaurv" />
     </application>
 
 </manifest>
