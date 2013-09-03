@@ -16,13 +16,9 @@ public class DayObjectFragment extends Fragment {
     private TextView mFirstAccumulateDesc;
     private TextView mFirstEntry;
     private TextView mFirstExit;
-    private TextView mFistEntryCode;
-    private TextView mFistExitCode;
     private TextView mSecondAccumulateDesc;
     private TextView mSecondEntry;
-    private TextView mSecondEntryCode;
     private TextView mSecondExit;
-    private TextView mSecondExitCode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,14 +28,9 @@ public class DayObjectFragment extends Fragment {
                 container, false);
 
         mFirstEntry = (TextView) rootView.findViewById(R.id.firstEntry);
-        mFistEntryCode = (TextView) rootView.findViewById(R.id.firstEntryCode);
         mFirstExit = (TextView) rootView.findViewById(R.id.firstExit);
-        mFistExitCode = (TextView) rootView.findViewById(R.id.firstExitCode);
         mSecondEntry = (TextView) rootView.findViewById(R.id.secondEntry);
-        mSecondEntryCode = (TextView) rootView
-                .findViewById(R.id.secondEntryCode);
         mSecondExit = (TextView) rootView.findViewById(R.id.secondExit);
-        mSecondExitCode = (TextView) rootView.findViewById(R.id.secondExitCode);
         mFirstAccumulateDesc = (TextView) rootView
                 .findViewById(R.id.firstAccumulatedDesc);
         mSecondAccumulateDesc = (TextView) rootView
@@ -56,27 +47,37 @@ public class DayObjectFragment extends Fragment {
         Evalos eva = appState.getEva();
 
         // First Entry
-        mFistEntryCode.setText(eva.getFirstEntryCode());
-        mFirstEntry.setText(eva.getFirstEntry());
+        String firstEntry = eva.getFirstEntry();
+        String[] firstEntryTimeList = firstEntry.split(":");
+        int firstEntryHour = Integer.parseInt(firstEntryTimeList[0]);
+        int firstEntryMinute = Integer.parseInt(firstEntryTimeList[1]);
+        mFirstEntry.setText(firstEntry);
 
         // First Exit
-        String firstExitCode = eva.getFirstExitCode();
-        if (!firstExitCode.isEmpty()) {
-            mFistExitCode.setText(firstExitCode);
-            mFirstExit.setText(eva.getFirstExit());
-            mFirstAccumulateDesc.setText(getText(R.string.accumulated));
-        }
+        String firstExit = eva.getFirstExit();
+        String[] firstExitTimeList = firstExit.split(":");
+        int firstExitHour = Integer.parseInt(firstExitTimeList[0]);
+        int firstExitMinute = Integer.parseInt(firstExitTimeList[1]);
+        mFirstExit.setText(firstExit);
+
+        // Compute the first accumulated
+        // DateTime firstEntryDateTime = new DateTime(2000, 1, 1,
+        // firstEntryHour,
+        // firstEntryMinute);
+        // DateTime firstAccumulated = firstEntryDateTime.plusHours(
+        // firstExitHour - firstEntryHour - 1).plusMinutes(
+        // firstEntryMinute + firstExitMinute);
+        // Period period = new Period(firstEntryDateTime, firstAccumulated);
+        // PeriodFormatter HHMMSSFormater = new PeriodFormatterBuilder()
+        // .printZeroAlways().minimumPrintedDigits(2).appendHours()
+        // .appendSeparator(":").appendMinutes().toFormatter();
+        //
+        // String test = HHMMSSFormater.print(period);
 
         // Second Entry
-        mSecondEntryCode.setText(eva.getSecondEntryCode());
         mSecondEntry.setText(eva.getSecondEntry());
 
         // Second Exit
-        String secondExitCode = eva.getSecondExitCode();
-        if (!secondExitCode.isEmpty()) {
-            mSecondExitCode.setText(secondExitCode);
-            mSecondExit.setText(eva.getSecondExit());
-            mSecondAccumulateDesc.setText(getText(R.string.accumulated));
-        }
+        mSecondExit.setText(eva.getSecondExit());
     }
 }

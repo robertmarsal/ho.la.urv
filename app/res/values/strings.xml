@@ -18,4 +18,6 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="info_loading_data">Loading data&#8230;</string>
+    <string name="entry">Entry</string>
+    <string name="exit">Exit</string>
 </resources>
