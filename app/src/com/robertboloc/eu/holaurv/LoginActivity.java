@@ -83,6 +83,8 @@ public class LoginActivity extends Activity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected()) {
+            // Inform of the start of the loading action
+            mScreenLogger.setText(getText(R.string.info_loading_data));
             new EvalosLoginTask().execute(username, password);
         } else {
             mScreenLogger.setText(getText(R.string.alert_no_network));
