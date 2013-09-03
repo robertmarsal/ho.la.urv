@@ -13,20 +13,16 @@ public class DayObjectFragment extends Fragment {
 
     public static final String ARG_OBJECT = "object";
 
-    private TextView mCode;
     private TextView mFirstAccumulateDesc;
     private TextView mFirstEntry;
     private TextView mFirstExit;
     private TextView mFistEntryCode;
     private TextView mFistExitCode;
-    private TextView mName;
     private TextView mSecondAccumulateDesc;
     private TextView mSecondEntry;
     private TextView mSecondEntryCode;
     private TextView mSecondExit;
     private TextView mSecondExitCode;
-    private TextView mShift;
-    private TextView mUsername;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,10 +31,6 @@ public class DayObjectFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_collection_object,
                 container, false);
 
-        mName = (TextView) rootView.findViewById(R.id.name);
-        mShift = (TextView) rootView.findViewById(R.id.shift);
-        mCode = (TextView) rootView.findViewById(R.id.code);
-        mUsername = (TextView) rootView.findViewById(R.id.username);
         mFirstEntry = (TextView) rootView.findViewById(R.id.firstEntry);
         mFistEntryCode = (TextView) rootView.findViewById(R.id.firstEntryCode);
         mFirstExit = (TextView) rootView.findViewById(R.id.firstExit);
@@ -62,18 +54,6 @@ public class DayObjectFragment extends Fragment {
         // Obtain the application state
         HoLaURV appState = ((HoLaURV) getActivity().getApplicationContext());
         Evalos eva = appState.getEva();
-
-        // Update the name
-        mName.setText(eva.getName());
-
-        // Update the shift
-        mShift.setText(eva.getShift());
-
-        // Update the username
-        mUsername.setText(eva.getUsername());
-
-        // Update the code
-        mCode.setText(eva.getCode());
 
         // First Entry
         mFistEntryCode.setText(eva.getFirstEntryCode());
