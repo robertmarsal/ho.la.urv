@@ -64,6 +64,10 @@ public class LoginActivity extends Activity {
             // Store the 'eva' in the application context
             HoLaURV appState = ((HoLaURV) getApplicationContext());
             appState.setEva(result);
+
+            // Clear the screen logger
+            mScreenLogger.setText("");
+
             // Launch the main activity
             startActivity(new Intent(LoginActivity.this, DisplayActivity.class));
         }
