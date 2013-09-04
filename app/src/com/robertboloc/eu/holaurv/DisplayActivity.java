@@ -34,7 +34,6 @@ public class DisplayActivity extends SherlockFragmentActivity implements
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDayCollectionPagerAdapter);
-        mViewPager.setCurrentItem(date.getDayOfWeek());
 
         actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -63,6 +62,9 @@ public class DisplayActivity extends SherlockFragmentActivity implements
                     .setText(mDayCollectionPagerAdapter.getPageTitle(i))
                     .setTabListener(this));
         }
+
+        // Swipe to today
+        mViewPager.setCurrentItem(date.getDayOfWeek() - 1);
     }
 
     @Override
