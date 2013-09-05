@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.robertboloc.eu.holaurv.lib.Evalos;
 
 public class DayObjectFragment extends Fragment {
@@ -30,6 +32,8 @@ public class DayObjectFragment extends Fragment {
 
     private LayoutInflater mInflater;
 
+    private AdView adView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class DayObjectFragment extends Fragment {
                 container, false);
 
         mDisplay = (LinearLayout) rootView.findViewById(R.id.display);
+        adView = (AdView) rootView.findViewById(R.id.adView);
 
         Bundle args = getArguments();
 
@@ -140,5 +145,11 @@ public class DayObjectFragment extends Fragment {
 
             mSecondAccumulate.setText(HHMMSSFormater.print(period));
         }
+
+        // Insert the add
+        AdRequest adRequest = new AdRequest();
+        adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+        adRequest.addTestDevice("SX11DRX02734");
+        adView.loadAd(new AdRequest());
     }
 }
