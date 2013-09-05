@@ -41,7 +41,7 @@ public class DayCollectionPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int i) {
         Fragment fragment = new DayObjectFragment();
         Bundle args = new Bundle();
-        args.putInt(DayObjectFragment.ARG_OBJECT, i + 1);
+        args.putInt(DayObjectFragment.ARG_OBJECT, i);
 
         fragment.setArguments(args);
         return fragment;

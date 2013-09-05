@@ -1,7 +1,9 @@
 package com.robertboloc.eu.holaurv.lib;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.joda.time.DateTime;
 
@@ -16,7 +18,7 @@ import com.gistlabs.mechanize.document.html.query.HtmlQueryBuilder;
 public class Evalos {
 
     private final MechanizeAgent agent;
-    private List<Entry> dayActivity;
+    private final Map dayActivity = new HashMap<Integer, List<Entry>>();
     private final String password;
     /**
      * While testing replace PLACEHOLDER with value.
@@ -67,13 +69,12 @@ public class Evalos {
      * 
      * @return List<Entry>
      */
-    private List<Entry> getDayActivity() {
-        if (dayActivity != null) {
-            return dayActivity;
+    private List<Entry> getDayActivity(int day) {
+        if (dayActivity.containsKey(day)) {
+            return (List<Entry>) dayActivity.get(day);
         } else {
 
-            HtmlElement today = getWeekActivity().get(
-                    getCustomIntDayOfTheWeek());
+            HtmlElement today = getWeekActivity().get(day);
             String rawActivity = today
                     .get(HtmlQueryBuilder.byClass("verdana10").and
                             .byWidth("149").and.byHeight("40"))
@@ -92,6 +93,8 @@ public class Evalos {
                 dayActivity.add(entryPrototype);
             }
 
+            this.dayActivity.put(day, dayActivity);
+
             return dayActivity;
         }
     }
@@ -101,9 +104,10 @@ public class Evalos {
      * 
      * @return String
      */
-    public String getFirstEntry() {
-        if (getDayActivity().size() > 0) {
-            return getDayActivity().get(0).getTime();
+    public String getFirstEntry(int day) {
+        List<Entry> dayActivity = getDayActivity(day);
+        if (dayActivity.size() > 0) {
+            return dayActivity.get(0).getTime();
         } else
             return PLACEHOLDER;
     }
@@ -113,21 +117,23 @@ public class Evalos {
      * 
      * @return String
      */
-    public String getFirstEntryCode() {
-        if (getDayActivity().size() > 0) {
-            return getDayActivity().get(0).getCode();
-        } else
-            return PLACEHOLDER;
-    }
+    // public String getFirstEntryCode() {
+    // List<Entry> dayActivity = getDayActivity(day);
+    // if (getDayActivity().size() > 0) {
+    // return getDayActivity().get(0).getCode();
+    // } else
+    // return PLACEHOLDER;
+    // }
 
     /**
-     * Obtains the time of the first entry.
+     * Obtains the time of the first exit.
      * 
      * @return String
      */
-    public String getFirstExit() {
-        if (getDayActivity().size() > 1) {
-            return getDayActivity().get(1).getTime();
+    public String getFirstExit(int day) {
+        List<Entry> dayActivity = getDayActivity(day);
+        if (dayActivity.size() > 1) {
+            return dayActivity.get(1).getTime();
         } else
             return PLACEHOLDER;
     }
@@ -137,12 +143,12 @@ public class Evalos {
      * 
      * @return String
      */
-    public String getFirstExitCode() {
-        if (getDayActivity().size() > 1) {
-            return getDayActivity().get(1).getCode();
-        } else
-            return PLACEHOLDER;
-    }
+    // public String getFirstExitCode() {
+    // if (getDayActivity().size() > 1) {
+    // return getDayActivity().get(1).getCode();
+    // } else
+    // return PLACEHOLDER;
+    // }
 
     /**
      * Obtains the full name of the user.
@@ -165,48 +171,48 @@ public class Evalos {
      * 
      * @return String
      */
-    public String getSecondEntry() {
-        if (getDayActivity().size() > 2) {
-            return getDayActivity().get(2).getTime();
-        } else
-            return PLACEHOLDER;
-    }
+    // public String getSecondEntry() {
+    // if (getDayActivity().size() > 2) {
+    // return getDayActivity().get(2).getTime();
+    // } else
+    // return PLACEHOLDER;
+    // }
 
     /**
      * Obtains the code of the second entry.
      * 
      * @return String
      */
-    public String getSecondEntryCode() {
-        if (getDayActivity().size() > 2) {
-            return getDayActivity().get(2).getCode();
-        } else
-            return PLACEHOLDER;
-    }
+    // public String getSecondEntryCode() {
+    // if (getDayActivity().size() > 2) {
+    // return getDayActivity().get(2).getCode();
+    // } else
+    // return PLACEHOLDER;
+    // }
 
     /**
      * Obtains the time of the second entry.
      * 
      * @return String
      */
-    public String getSecondExit() {
-        if (getDayActivity().size() > 3) {
-            return getDayActivity().get(3).getTime();
-        } else
-            return PLACEHOLDER;
-    }
+    // public String getSecondExit() {
+    // if (getDayActivity().size() > 3) {
+    // return getDayActivity().get(3).getTime();
+    // } else
+    // return PLACEHOLDER;
+    // }
 
     /**
      * Obtains the code of the second exit.
      * 
      * @return String
      */
-    public String getSecondExitCode() {
-        if (getDayActivity().size() > 3) {
-            return getDayActivity().get(3).getCode();
-        } else
-            return PLACEHOLDER;
-    }
+    // public String getSecondExitCode() {
+    // if (getDayActivity().size() > 3) {
+    // return getDayActivity().get(3).getCode();
+    // } else
+    // return PLACEHOLDER;
+    // }
 
     /**
      * Obtains todays' shift.
