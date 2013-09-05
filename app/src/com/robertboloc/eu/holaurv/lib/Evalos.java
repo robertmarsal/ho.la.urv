@@ -27,12 +27,16 @@ public class Evalos {
 
     private HtmlElements response;
 
+    private String title;
+
     private final String username;
 
     /**
      * Evalos public base url.
      */
     private final String WEB_APP_BASE_URL = "http://gestiodelapresencia.urv.cat/evalos/login.html";
+    private final String LOGIN_ERROR = "Error de Login";
+
     private List<HtmlElement> weekActivity;
 
     public Evalos(String username, String password) {
@@ -265,6 +269,8 @@ public class Evalos {
             form.get("password").set(password);
 
             HtmlDocument document = form.submit();
+
+            title = document.getTitle();
             response = document.htmlElements();
 
         } catch (Exception e) {
@@ -272,5 +278,14 @@ public class Evalos {
         }
 
         return this;
+    }
+
+    public boolean loginSuccessful() {
+
+        if (title.equals(LOGIN_ERROR)) {
+            return false;
+        }
+
+        return true;
     }
 }

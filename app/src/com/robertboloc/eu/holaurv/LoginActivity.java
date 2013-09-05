@@ -61,15 +61,22 @@ public class LoginActivity extends Activity {
 
         @Override
         protected void onPostExecute(Evalos result) {
-            // Store the 'eva' in the application context
-            HoLaURV appState = ((HoLaURV) getApplicationContext());
-            appState.setEva(result);
+            if (result.loginSuccessful()) {
 
-            // Clear the screen logger
-            mScreenLogger.setText("");
+                // Store the 'eva' in the application context
+                HoLaURV appState = ((HoLaURV) getApplicationContext());
+                appState.setEva(result);
 
-            // Launch the main activity
-            startActivity(new Intent(LoginActivity.this, DisplayActivity.class));
+                // Clear the screen logger
+                mScreenLogger.setText("");
+
+                // Launch the main activity
+                startActivity(new Intent(LoginActivity.this,
+                        DisplayActivity.class));
+            } else {
+                mScreenLogger
+                        .setText(getText(R.string.alert_wrong_credentials));
+            }
         }
     }
 
