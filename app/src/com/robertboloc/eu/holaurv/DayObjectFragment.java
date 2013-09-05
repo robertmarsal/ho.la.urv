@@ -19,12 +19,13 @@ public class DayObjectFragment extends Fragment {
 
     public static final String ARG_OBJECT = "object";
 
-    private TextView mFirstAccumulate;
     private TextView mFirstEntry;
     private TextView mFirstExit;
-    private TextView mSecondAccumulate;
     private TextView mSecondEntry;
     private TextView mSecondExit;
+    private TextView mFirstAccumulate;
+    private TextView mSecondAccumulate;
+
     private LinearLayout mDisplay;
 
     private LayoutInflater mInflater;
@@ -63,7 +64,7 @@ public class DayObjectFragment extends Fragment {
 
         // First Exit
         String firstExit = eva.getFirstExit(day);
-        if (!firstExit.isEmpty()) {
+        if (!firstEntry.isEmpty() && !firstExit.isEmpty()) {
             mDisplay.addView(mInflater.inflate(R.layout.first_exit, mDisplay,
                     false));
             mFirstExit = (TextView) mDisplay.findViewById(R.id.firstExit);
@@ -95,11 +96,49 @@ public class DayObjectFragment extends Fragment {
             mFirstAccumulate.setText(HHMMSSFormater.print(period));
         }
 
-        //
-        // // Second Entry
-        // mSecondEntry.setText(eva.getSecondEntry());
-        //
-        // // Second Exit
-        // mSecondExit.setText(eva.getSecondExit());
+        // Second Entry
+        String secondEntry = eva.getSecondEntry(day);
+        if (!firstEntry.isEmpty() && !firstExit.isEmpty()
+                && !secondEntry.isEmpty()) {
+            mDisplay.addView(mInflater.inflate(R.layout.second_entry, mDisplay,
+                    false));
+            mSecondEntry = (TextView) mDisplay.findViewById(R.id.secondEntry);
+            mSecondEntry.setText(secondEntry);
+        }
+
+        // Second Exit
+        String secondExit = eva.getSecondExit(day);
+        if (!firstEntry.isEmpty() && !firstExit.isEmpty()
+                && !secondEntry.isEmpty() && !secondExit.isEmpty()) {
+            mDisplay.addView(mInflater.inflate(R.layout.second_exit, mDisplay,
+                    false));
+            mSecondExit = (TextView) mDisplay.findViewById(R.id.secondExit);
+            mSecondExit.setText(secondExit);
+
+            // Compute the second accumulated
+            String[] firstEntryTimeList = firstEntry.split(":");
+            int firstEntryHour = Integer.parseInt(firstEntryTimeList[0]);
+            int firstEntryMinute = Integer.parseInt(firstEntryTimeList[1]);
+
+            String[] secondExitTimeList = secondExit.split(":");
+            int secondExitHour = Integer.parseInt(secondExitTimeList[0]);
+            int secondExitMinute = Integer.parseInt(secondExitTimeList[1]);
+
+            DateTime firstEntryDateTime = new DateTime(2000, 1, 1,
+                    firstEntryHour, firstEntryMinute);
+            DateTime secondExitDateTime = new DateTime(2000, 1, 1,
+                    secondExitHour, secondExitMinute);
+
+            Period period = new Period(firstEntryDateTime, secondExitDateTime);
+            PeriodFormatter HHMMSSFormater = new PeriodFormatterBuilder()
+                    .printZeroAlways().minimumPrintedDigits(2).appendHours()
+                    .appendSeparator("h").appendMinutes().appendLiteral("m")
+                    .toFormatter();
+
+            mSecondAccumulate = (TextView) mDisplay
+                    .findViewById(R.id.secondAccumulate);
+
+            mSecondAccumulate.setText(HHMMSSFormater.print(period));
+        }
     }
 }

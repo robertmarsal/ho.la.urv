@@ -171,12 +171,13 @@ public class Evalos {
      * 
      * @return String
      */
-    // public String getSecondEntry() {
-    // if (getDayActivity().size() > 2) {
-    // return getDayActivity().get(2).getTime();
-    // } else
-    // return PLACEHOLDER;
-    // }
+    public String getSecondEntry(int day) {
+        List<Entry> dayActivity = getDayActivity(day);
+        if (dayActivity.size() > 2) {
+            return dayActivity.get(2).getTime();
+        } else
+            return PLACEHOLDER;
+    }
 
     /**
      * Obtains the code of the second entry.
@@ -191,16 +192,17 @@ public class Evalos {
     // }
 
     /**
-     * Obtains the time of the second entry.
+     * Obtains the time of the second exit.
      * 
      * @return String
      */
-    // public String getSecondExit() {
-    // if (getDayActivity().size() > 3) {
-    // return getDayActivity().get(3).getTime();
-    // } else
-    // return PLACEHOLDER;
-    // }
+    public String getSecondExit(int day) {
+        List<Entry> dayActivity = getDayActivity(day);
+        if (dayActivity.size() > 3) {
+            return dayActivity.get(3).getTime();
+        } else
+            return PLACEHOLDER;
+    }
 
     /**
      * Obtains the code of the second exit.

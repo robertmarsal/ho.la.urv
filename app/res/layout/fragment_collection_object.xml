@@ -1,178 +1,19 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-<LinearLayout
-    android:id="@+id/display"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/urvWhite"
-    android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
-    tools:context=".DisplayActivity" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <!-- First exit -->
+    <LinearLayout
+        android:id="@+id/display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/urvWhite"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        tools:context=".DisplayActivity" >
+    </LinearLayout>
 
-<!--     <RelativeLayout -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_marginBottom="5dp" -->
-<!--         android:background="@drawable/tile_background" -->
-<!--         android:padding="10dp" > -->
-
-<!--         <LinearLayout -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_alignParentLeft="true" -->
-<!--             android:layout_gravity="left" -->
-<!--             android:orientation="vertical" > -->
-
-<!--             <TextView -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:text="@string/exit" -->
-<!--                 android:textAppearance="?android:attr/textAppearanceSmall" -->
-<!--                 android:textColor="@color/urvGray" /> -->
-
-<!--             <TextView -->
-<!--                 android:id="@+id/firstExit" -->
-<!--                 android:layout_width="100dp" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:text="15:78" -->
-<!--                 android:textColor="@color/urvBlack" -->
-<!--                 android:textSize="30sp" -->
-<!--                 android:textStyle="bold" /> -->
-<!--         </LinearLayout> -->
-
-<!--         <LinearLayout -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_alignParentRight="true" -->
-<!--             android:layout_gravity="right" -->
-<!--             android:orientation="vertical" > -->
-
-<!--             <LinearLayout -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_gravity="left" -->
-<!--                 android:orientation="vertical" > -->
-
-<!--                 <TextView -->
-<!--                     android:id="@+id/firstAccumulatedDesc" -->
-<!--                     android:layout_width="wrap_content" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:text="@string/accumulated" -->
-<!--                     android:textAppearance="?android:attr/textAppearanceSmall" -->
-<!--                     android:textColor="@color/urvGray" /> -->
-
-<!--                 <TextView -->
-<!--                     android:id="@+id/firstAccumulated" -->
-<!--                     android:layout_width="100dp" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:text="35min" -->
-<!--                     android:textColor="@color/urvBlack" -->
-<!--                     android:textSize="30sp" -->
-<!--                     android:textStyle="bold" /> -->
-<!--             </LinearLayout> -->
-<!--         </LinearLayout> -->
-<!--     </RelativeLayout> -->
-
-    <!-- Second Entry -->
-
-<!--     <LinearLayout -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_gravity="left" -->
-<!--         android:layout_marginBottom="5dp" -->
-<!--         android:background="@drawable/tile_background" -->
-<!--         android:orientation="vertical" -->
-<!--         android:padding="10dp" > -->
-
-<!--         <TextView -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:text="@string/entry" -->
-<!--             android:textAppearance="?android:attr/textAppearanceSmall" -->
-<!--             android:textColor="@color/urvGray" /> -->
-
-<!--         <TextView -->
-<!--             android:id="@+id/secondEntry" -->
-<!--             android:layout_width="100dp" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:text="15:23" -->
-<!--             android:textColor="@color/urvBlack" -->
-<!--             android:textSize="30sp" -->
-<!--             android:textStyle="bold" /> -->
-<!--     </LinearLayout> -->
-
-<!--     Second Exit -->
-
-<!--     <RelativeLayout -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_marginBottom="5dp" -->
-<!--         android:background="@drawable/tile_background" -->
-<!--         android:padding="10dp" > -->
-
-<!--         <LinearLayout -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_alignParentLeft="true" -->
-<!--             android:layout_gravity="left" -->
-<!--             android:orientation="vertical" > -->
-
-<!--             <TextView -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:text="@string/exit" -->
-<!--                 android:textAppearance="?android:attr/textAppearanceSmall" -->
-<!--                 android:textColor="@color/urvGray" /> -->
-
-<!--             <TextView -->
-<!--                 android:id="@+id/secondExit" -->
-<!--                 android:layout_width="100dp" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:text="18:45" -->
-<!--                 android:textColor="@color/urvBlack" -->
-<!--                 android:textSize="30sp" -->
-<!--                 android:textStyle="bold" /> -->
-<!--         </LinearLayout> -->
-
-<!--         <LinearLayout -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_alignParentRight="true" -->
-<!--             android:layout_gravity="right" -->
-<!--             android:orientation="vertical" > -->
-
-<!--             <LinearLayout -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_gravity="left" -->
-<!--                 android:orientation="vertical" > -->
-
-<!--                 <TextView -->
-<!--                     android:id="@+id/secondAccumulatedDesc" -->
-<!--                     android:layout_width="wrap_content" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:text="@string/accumulated" -->
-<!--                     android:textAppearance="?android:attr/textAppearanceSmall" -->
-<!--                     android:textColor="@color/urvGray" /> -->
-
-<!--                 <TextView -->
-<!--                     android:id="@+id/secondAccumulated" -->
-<!--                     android:layout_width="100dp" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:text="18mib" -->
-<!--                     android:textColor="@color/urvBlack" -->
-<!--                     android:textSize="30sp" -->
-<!--                     android:textStyle="bold" /> -->
-<!--             </LinearLayout> -->
-<!--         </LinearLayout> -->
-<!--     </RelativeLayout> -->
-
-</LinearLayout>
 </ScrollView>
