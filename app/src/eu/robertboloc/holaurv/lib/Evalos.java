@@ -1,4 +1,4 @@
-package com.robertboloc.eu.holaurv.lib;
+package eu.robertboloc.holaurv.lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -282,7 +282,7 @@ public class Evalos {
 
     public boolean loginSuccessful() {
 
-        if (title.equals(LOGIN_ERROR)) {
+        if (title.equals(this.LOGIN_ERROR)) {
             return false;
         }
 

@@ -1,4 +1,4 @@
-package com.robertboloc.eu.holaurv;
+package eu.robertboloc.holaurv;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -8,6 +8,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
+
+import eu.robertboloc.holaurv.R;
 
 public class AboutActivity extends Activity {
 

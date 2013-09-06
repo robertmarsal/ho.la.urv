@@ -1,4 +1,4 @@
-package com.robertboloc.eu.holaurv;
+package eu.robertboloc.holaurv;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,7 +18,9 @@ import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.SystemService;
 import com.googlecode.androidannotations.annotations.ViewById;
-import com.robertboloc.eu.holaurv.lib.Evalos;
+
+import eu.robertboloc.holaurv.R;
+import eu.robertboloc.holaurv.lib.Evalos;
 
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.robertboloc.eu.holaurv"
+    package="eu.robertboloc.holaurv"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,13 +12,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".HoLaURV_"
+        android:name="eu.robertboloc.holaurv.HoLaURV_"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/brand"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name=".LoginActivity_"
+            android:name="eu.robertboloc.holaurv.LoginActivity_"
             android:label="@string/brand" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +27,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DisplayActivity"
+            android:name="eu.robertboloc.holaurv.DisplayActivity"
             android:theme="@style/Theme.Holaurv" />
-        <activity android:name=".AboutActivity" />
+        <activity android:name="eu.robertboloc.holaurv.AboutActivity" />
         <activity
             android:name="com.google.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />

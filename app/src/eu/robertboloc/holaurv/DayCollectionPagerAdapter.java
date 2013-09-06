@@ -1,4 +1,6 @@
-package com.robertboloc.eu.holaurv;
+package eu.robertboloc.holaurv;
+
+import eu.robertboloc.holaurv.R;
 
 import android.content.Context;
 import android.os.Bundle;

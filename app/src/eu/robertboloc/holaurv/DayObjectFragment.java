@@ -1,4 +1,4 @@
-package com.robertboloc.eu.holaurv;
+package eu.robertboloc.holaurv;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
-import com.robertboloc.eu.holaurv.lib.Evalos;
+
+import eu.robertboloc.holaurv.R;
+import eu.robertboloc.holaurv.lib.Evalos;
 
 public class DayObjectFragment extends Fragment {
 

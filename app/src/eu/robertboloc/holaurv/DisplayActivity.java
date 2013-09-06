@@ -1,4 +1,4 @@
-package com.robertboloc.eu.holaurv;
+package eu.robertboloc.holaurv;
 
 import org.joda.time.DateTime;
 
@@ -16,7 +16,9 @@ import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.robertboloc.eu.holaurv.lib.TypefaceSpan;
+
+import eu.robertboloc.holaurv.R;
+import eu.robertboloc.holaurv.lib.TypefaceSpan;
 
 public class DisplayActivity extends SherlockFragmentActivity implements
         com.actionbarsherlock.app.ActionBar.TabListener {

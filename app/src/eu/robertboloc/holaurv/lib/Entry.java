@@ -1,4 +1,4 @@
-package com.robertboloc.eu.holaurv.lib;
+package eu.robertboloc.holaurv.lib;
 
 public class Entry {
 
