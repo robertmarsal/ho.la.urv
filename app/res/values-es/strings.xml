@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="brand">Ho.La. URV</string>
+    <string name="cd_brand">Logo Ho.La. URV</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Acceder</string>
+    <string name="alert_empty_credentials">Faltan credenciales!</string>
+    <string name="alert_wrong_credentials">Credenciales incorrectas!</string>
+    <string name="alert_no_network">No hay conexión de red disponible!</string>
+    <string name="accumulated">Acumulado</string>
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
+    <string name="info_loading_data">Cargando datos&#8230;</string>
+    <string name="entry">Entrada</string>
+    <string name="exit">Salida</string>
+    <string name="menu_item_about">Acerca de</string>
+    <string name="about_idea">Una idea de Robert Boloc &amp; Nur Ortega</string>
+    <string name="about_robert">http://robertboloc.eu</string>
+    <string name="about_nur">http://esnur.eu</string>
+
+</resources>

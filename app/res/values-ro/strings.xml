@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="brand">Ho.La. URV</string>
+    <string name="cd_brand">Logo Ho.La. URV</string>
+    <string name="username">Utilizator</string>
+    <string name="password">Parolă</string>
+    <string name="login">Conectare</string>
+    <string name="alert_empty_credentials">Lipsesc date de conectare!</string>
+    <string name="alert_wrong_credentials">Datele de conectare nu sunt corecte!</string>
+    <string name="alert_no_network">Nici o conexiune de rețea disponibilă!</string>
+    <string name="accumulated">Acumulat</string>
+    <string name="monday">Luni</string>
+    <string name="tuesday">Marți</string>
+    <string name="wednesday">Miercuri</string>
+    <string name="thursday">Joi</string>
+    <string name="friday">Vineri</string>
+    <string name="saturday">Sâmbătă</string>
+    <string name="sunday">Duminică</string>
+    <string name="info_loading_data">Se încarcă datele&#8230;</string>
+    <string name="entry">Intrare</string>
+    <string name="exit">Ieșire</string>
+    <string name="menu_item_about">Despre</string>
+    <string name="about_idea">O idee de Robert Boloc &amp; Nur Ortega</string>
+    <string name="about_robert">http://robertboloc.eu</string>
+    <string name="about_nur">http://esnur.eu</string>
+
+</resources>
