@@ -2,6 +2,7 @@ package com.robertboloc.eu.holaurv;
 
 import org.joda.time.DateTime;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,8 @@ import android.text.style.ForegroundColorSpan;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.robertboloc.eu.holaurv.lib.TypefaceSpan;
 
 public class DisplayActivity extends SherlockFragmentActivity implements
@@ -65,6 +68,28 @@ public class DisplayActivity extends SherlockFragmentActivity implements
 
         // Swipe to today
         mViewPager.setCurrentItem(date.getDayOfWeek() - 1);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Add the info option
+        menu.add(0, 0, 0, getText(R.string.menu_item_about))
+                .setIcon(R.drawable.ic_action_about)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+        case 0:
+            startActivity(new Intent(this, AboutActivity.class));
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
