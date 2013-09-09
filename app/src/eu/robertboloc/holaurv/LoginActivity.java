@@ -19,7 +19,6 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.SystemService;
 import com.googlecode.androidannotations.annotations.ViewById;
 
-import eu.robertboloc.holaurv.R;
 import eu.robertboloc.holaurv.lib.Evalos;
 
 @EActivity(R.layout.activity_login)
