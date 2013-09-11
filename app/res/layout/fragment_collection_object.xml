@@ -30,7 +30,6 @@
         android:layout_alignParentBottom="true"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="ca-app-pub-7425824729828943/8750728519"
-        ads:loadAdOnCreate="true"
-        ads:testDevices="TEST_EMULATOR, SX11DRX02734" />
+        ads:loadAdOnCreate="true" />
 
 </RelativeLayout>

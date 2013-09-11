@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
-import eu.robertboloc.holaurv.R;
 import eu.robertboloc.holaurv.lib.Evalos;
 
 public class DayObjectFragment extends Fragment {
@@ -149,9 +148,6 @@ public class DayObjectFragment extends Fragment {
         }
 
         // Insert the add
-        AdRequest adRequest = new AdRequest();
-        adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
-        adRequest.addTestDevice("SX11DRX02734");
         adView.loadAd(new AdRequest());
     }
 }
