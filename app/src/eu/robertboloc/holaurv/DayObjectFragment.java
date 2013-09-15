@@ -5,6 +5,7 @@ import org.joda.time.Period;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -49,15 +50,23 @@ public class DayObjectFragment extends Fragment {
 
         Bundle args = getArguments();
 
-        refresh(args.getInt(ARG_OBJECT));
+        // Obtain the application state
+        HoLaURV appState = ((HoLaURV) getActivity().getApplicationContext());
+        Evalos eva = appState.getEva();
+
+        // In case the app was killed by the OS
+        if (!(eva instanceof Evalos)) {
+            Intent intent = new Intent(getActivity(), LoginActivity_.class);
+            startActivity(intent);
+            getActivity().finish();
+        } else {
+            refresh(eva, args.getInt(ARG_OBJECT));
+        }
 
         return rootView;
     }
 
-    protected void refresh(int day) {
-        // Obtain the application state
-        HoLaURV appState = ((HoLaURV) getActivity().getApplicationContext());
-        Evalos eva = appState.getEva();
+    protected void refresh(Evalos eva, int day) {
 
         // First Entry
         String firstEntry = eva.getFirstEntry(day);
