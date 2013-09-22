@@ -1,7 +1,5 @@
 package eu.robertboloc.holaurv;
 
-import eu.robertboloc.holaurv.R;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

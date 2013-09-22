@@ -2,6 +2,7 @@ package eu.robertboloc.holaurv;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
@@ -23,6 +24,10 @@ import eu.robertboloc.holaurv.lib.Evalos;
 
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity {
+
+    public static final String HOLAURV_PREFS = "holaurvprefs";
+
+    private SharedPreferences appSettings;
 
     @ViewById(R.id.screenLogger)
     TextView mScreenLogger;
@@ -53,6 +58,14 @@ public class LoginActivity extends Activity {
         mBrand.setTypeface(font);
     }
 
+    @AfterViews
+    void restorePreferences() {
+        appSettings = getSharedPreferences(HOLAURV_PREFS, 0);
+
+        // Restore the last used username
+        mUsername.setText(appSettings.getString("username", ""));
+    }
+
     private class EvalosLoginTask extends AsyncTask<String, Void, Evalos> {
 
         @Override
@@ -67,6 +80,14 @@ public class LoginActivity extends Activity {
                 // Store the 'eva' in the application context
                 HoLaURV appState = ((HoLaURV) getApplicationContext());
                 appState.setEva(result);
+
+                // Store the username if it has changed
+                if (!(appSettings.getString("username", "").equals(result
+                        .getUsername()))) {
+                    SharedPreferences.Editor prefEditor = appSettings.edit();
+                    prefEditor.putString("username", result.getUsername());
+                    prefEditor.commit();
+                }
 
                 // Clear the screen logger
                 mScreenLogger.setText("");
