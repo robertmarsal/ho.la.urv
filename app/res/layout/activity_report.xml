@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/urvWhite" >
+
+    <TableLayout
+        android:id="@+id/reportTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="*"
+        android:stretchColumns="*" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/reportTableLegend"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/urvBlack"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableHead"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/report_table_header_day"
+                android:textColor="@color/urvBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/report_table_header_theoretical"
+                android:textColor="@color/urvBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/report_table_header_real"
+                android:textColor="@color/urvBlack"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/report_table_header_balance"
+                android:textColor="@color/urvBlack"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableMondayRow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/monday"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableMondayTheoretical"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableMondayReal"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableMondayBalance"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_balance"
+                android:textColor="@color/urvBlack" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableTuesdayRow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tuesday"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableTuesdayTheoretical"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableTuesdayReal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableTuesdayBalance"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableWednesdayRow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/wednesday"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableWednesdayTheoretical"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableWednesdayReal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableWednesdayBalance"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableThursdayRow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/thursday"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableThursdayTheoretical"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableThursdayReal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableThursdayBalance"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableFridayRow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/friday"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableFridayTheoretical"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableFridayReal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableFridayBalance"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableSaturdayRow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/saturday"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableSaturdayTheoretical"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableSaturdayReal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableSaturdayBalance"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/reportTableSundayRow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/sunday"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableSundayTheoretical"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableSundayReal"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+
+            <TextView
+                android:id="@+id/reportTableSundayBalance"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/report_table_empty_entry"
+                android:textColor="@color/urvBlack" />
+        </TableRow>
+    </TableLayout>
+
+    <com.google.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-7425824729828943/8750728519"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR, 04A07A6F83A0F66849EA3DF11B50F45B" />
+
+</RelativeLayout>

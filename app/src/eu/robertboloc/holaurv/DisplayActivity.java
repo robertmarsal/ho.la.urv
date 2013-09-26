@@ -17,7 +17,6 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
-import eu.robertboloc.holaurv.R;
 import eu.robertboloc.holaurv.lib.TypefaceSpan;
 
 public class DisplayActivity extends SherlockFragmentActivity implements
@@ -74,8 +73,13 @@ public class DisplayActivity extends SherlockFragmentActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Add the report option
+        menu.add(0, 0, 0, getText(R.string.menu_item_report))
+                .setIcon(R.drawable.ic_report)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
         // Add the info option
-        menu.add(0, 0, 0, getText(R.string.menu_item_about))
+        menu.add(0, 1, 1, getText(R.string.menu_item_about))
                 .setIcon(R.drawable.ic_action_about)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
@@ -87,6 +91,9 @@ public class DisplayActivity extends SherlockFragmentActivity implements
         // Handle presses on the action bar items
         switch (item.getItemId()) {
         case 0:
+            startActivity(new Intent(this, ReportActivity.class));
+            return true;
+        case 1:
             startActivity(new Intent(this, AboutActivity.class));
             return true;
         default:

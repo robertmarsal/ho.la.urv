@@ -21,8 +21,14 @@
     <string name="entry">Entrada</string>
     <string name="exit">Sortida</string>
     <string name="menu_item_about">Sobre</string>
+    <string name="menu_item_report">Informe setmanal</string>
     <string name="about_idea">Una idea de Robert Boloc &amp; Nur Ortega</string>
     <string name="about_robert">http://robertboloc.eu</string>
     <string name="about_nur">http://esnur.eu</string>
-
+    <string name="report_table_empty_balance">00:00</string>
+    <string name="report_table_empty_entry">-</string>
+    <string name="report_table_header_day">Dia</string>
+    <string name="report_table_header_theoretical">Teòric</string>
+    <string name="report_table_header_real">Real</string>
+    <string name="report_table_header_balance">Saldo</string>
 </resources>

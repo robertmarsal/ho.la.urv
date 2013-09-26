@@ -1,6 +1,5 @@
 package eu.robertboloc.holaurv;
 
-import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
@@ -68,6 +67,19 @@ public class DayObjectFragment extends Fragment {
 
     protected void refresh(Evalos eva, int day) {
 
+        Period accumulate = null;
+
+        // Period formatter instance
+        PeriodFormatter HHMMSSFormater = new PeriodFormatterBuilder()
+                .printZeroAlways().minimumPrintedDigits(2).appendHours()
+                .appendSeparator("h").appendMinutes().appendLiteral("m")
+                .toFormatter();
+
+        // Accumulate formatter instance
+        PeriodFormatter DailyAccumulateFormatter = new PeriodFormatterBuilder()
+                .printZeroAlways().minimumPrintedDigits(2).appendHours()
+                .appendSeparator(":").appendMinutes().toFormatter();
+
         // First Entry
         String firstEntry = eva.getFirstEntry(day);
         if (!firstEntry.isEmpty()) {
@@ -86,29 +98,15 @@ public class DayObjectFragment extends Fragment {
             mFirstExit.setText(firstExit);
 
             // Compute the first accumulated
-            String[] firstEntryTimeList = firstEntry.split(":");
-            int firstEntryHour = Integer.parseInt(firstEntryTimeList[0]);
-            int firstEntryMinute = Integer.parseInt(firstEntryTimeList[1]);
-
-            String[] firstExitTimeList = firstExit.split(":");
-            int firstExitHour = Integer.parseInt(firstExitTimeList[0]);
-            int firstExitMinute = Integer.parseInt(firstExitTimeList[1]);
-
-            DateTime firstEntryDateTime = new DateTime(2000, 1, 1,
-                    firstEntryHour, firstEntryMinute);
-            DateTime firstExitDateTime = new DateTime(2000, 1, 1,
-                    firstExitHour, firstExitMinute);
-
-            Period period = new Period(firstEntryDateTime, firstExitDateTime);
-            PeriodFormatter HHMMSSFormater = new PeriodFormatterBuilder()
-                    .printZeroAlways().minimumPrintedDigits(2).appendHours()
-                    .appendSeparator("h").appendMinutes().appendLiteral("m")
-                    .toFormatter();
+            accumulate = eva.computePartialAcumulate(firstEntry, firstExit);
 
             mFirstAccumulate = (TextView) mDisplay
                     .findViewById(R.id.firstAccumulated);
+            mFirstAccumulate.setText(HHMMSSFormater.print(accumulate));
 
-            mFirstAccumulate.setText(HHMMSSFormater.print(period));
+            // Store the accumulate in case there is no other entry/exit
+            eva.setDailyAccumulate(day,
+                    DailyAccumulateFormatter.print(accumulate));
         }
 
         // Second Entry
@@ -131,29 +129,20 @@ public class DayObjectFragment extends Fragment {
             mSecondExit.setText(secondExit);
 
             // Compute the second accumulated
-            String[] firstEntryTimeList = firstEntry.split(":");
-            int firstEntryHour = Integer.parseInt(firstEntryTimeList[0]);
-            int firstEntryMinute = Integer.parseInt(firstEntryTimeList[1]);
+            Period secondAccumulate = eva.computePartialAcumulate(secondEntry,
+                    secondExit);
 
-            String[] secondExitTimeList = secondExit.split(":");
-            int secondExitHour = Integer.parseInt(secondExitTimeList[0]);
-            int secondExitMinute = Integer.parseInt(secondExitTimeList[1]);
-
-            DateTime firstEntryDateTime = new DateTime(2000, 1, 1,
-                    firstEntryHour, firstEntryMinute);
-            DateTime secondExitDateTime = new DateTime(2000, 1, 1,
-                    secondExitHour, secondExitMinute);
-
-            Period period = new Period(firstEntryDateTime, secondExitDateTime);
-            PeriodFormatter HHMMSSFormater = new PeriodFormatterBuilder()
-                    .printZeroAlways().minimumPrintedDigits(2).appendHours()
-                    .appendSeparator("h").appendMinutes().appendLiteral("m")
-                    .toFormatter();
+            accumulate = accumulate.plusHours(secondAccumulate.getHours())
+                    .plusMinutes(secondAccumulate.getMinutes()).toPeriod();
 
             mSecondAccumulate = (TextView) mDisplay
                     .findViewById(R.id.secondAccumulate);
 
-            mSecondAccumulate.setText(HHMMSSFormater.print(period));
+            mSecondAccumulate.setText(HHMMSSFormater.print(accumulate));
+
+            // Replace the store daily accumulate as we have a second entry/exit
+            eva.setDailyAccumulate(day,
+                    DailyAccumulateFormatter.print(accumulate));
         }
 
         // Insert the add

@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.joda.time.DateTime;
+import org.joda.time.Period;
+import org.joda.time.format.PeriodFormatter;
+import org.joda.time.format.PeriodFormatterBuilder;
 
 import com.gistlabs.mechanize.MechanizeAgent;
 import com.gistlabs.mechanize.document.Document;
@@ -19,25 +22,24 @@ public class Evalos {
 
     private final MechanizeAgent agent;
     private final Map dayActivity = new HashMap<Integer, List<Entry>>();
-    private final String password;
-    /**
-     * While testing replace PLACEHOLDER with value.
-     */
-    private final String PLACEHOLDER = "";
+    private List<HtmlElement> weekActivity;
+    private final String[] dailyAccumulates = new String[7];
 
     private HtmlElements response;
 
     private String title;
-
     private final String username;
+    private final String password;
 
     /**
      * Evalos public base url.
      */
     private final String WEB_APP_BASE_URL = "http://gestiodelapresencia.urv.cat/evalos/login.html";
     private final String LOGIN_ERROR = "Error de Login";
-
-    private List<HtmlElement> weekActivity;
+    /**
+     * While testing replace PLACEHOLDER with value.
+     */
+    private final String PLACEHOLDER = "";
 
     public Evalos(String username, String password) {
         this.username = username;
@@ -225,12 +227,19 @@ public class Evalos {
      * 
      * @return String
      */
-    public String getShift() {
-        HtmlElement today = getWeekActivity().get(getCustomIntDayOfTheWeek());
-        return today
+    public String getShift(int day) {
+        HtmlElement today = getWeekActivity().get(day);
+        String shift = today
                 .get(HtmlQueryBuilder.byClass("verdana12").and.byWidth("75").and
                         .byHeight("40")).get(HtmlQueryBuilder.byTag("div"))
-                .getInnerHtml();
+                .getInnerHtml().replaceFirst("G-", "0")
+                .replaceFirst("Festiu", "");
+
+        if (shift.isEmpty()) {
+            return "";
+        }
+
+        return shift;
     }
 
     /**
@@ -287,5 +296,72 @@ public class Evalos {
         }
 
         return true;
+    }
+
+    public void setDailyAccumulate(int day, String accumulate) {
+        this.dailyAccumulates[day] = accumulate;
+    }
+
+    public String getDailyAccumulate(int day) {
+        if (this.dailyAccumulates[day] != null) {
+            return this.dailyAccumulates[day];
+        } else {
+            if (!getFirstEntry(day).isEmpty()) {
+
+                PeriodFormatter DailyAccumulateFormatter = new PeriodFormatterBuilder()
+                        .printZeroAlways().minimumPrintedDigits(2)
+                        .appendHours().appendSeparator(":").appendMinutes()
+                        .toFormatter();
+
+                Period accumulate = this.computePartialAcumulate(
+                        getFirstEntry(day), getFirstExit(day));
+
+                if (!getSecondEntry(day).isEmpty()) {
+                    Period secondAccumulate = this.computePartialAcumulate(
+                            getSecondEntry(day), getSecondExit(day));
+
+                    accumulate = accumulate.plusHours(
+                            secondAccumulate.getHours()).plusMinutes(
+                            secondAccumulate.getMinutes());
+                }
+
+                return this.dailyAccumulates[day] = DailyAccumulateFormatter
+                        .print(accumulate);
+            }
+        }
+
+        return "-";
+    }
+
+    public Period computePartialAcumulate(String entry, String exit) {
+
+        String[] entryTimeList = entry.split(":");
+        int entryHour = Integer.parseInt(entryTimeList[0]);
+        int entryMinute = Integer.parseInt(entryTimeList[1]);
+
+        String[] exitTimeList = exit.split(":");
+        int exitHour = Integer.parseInt(exitTimeList[0]);
+        int exitMinute = Integer.parseInt(exitTimeList[1]);
+
+        DateTime entryDateTime = new DateTime(2000, 1, 1, entryHour,
+                entryMinute);
+        DateTime exitDateTime = new DateTime(2000, 1, 1, exitHour, exitMinute);
+
+        return new Period(entryDateTime, exitDateTime);
+    }
+
+    public long computeBalance(String theorical, String real) {
+
+        String[] theoricalTimeList = theorical.split(":");
+        // Convert hours and seconds to milis
+        int theoricalMilis = (Integer.parseInt(theoricalTimeList[0]) * 3600000)
+                + (Integer.parseInt(theoricalTimeList[1]) * 60000);
+
+        String[] realTimeList = real.split(":");
+        // Convert hours and seconds to milis
+        int realMilis = (Integer.parseInt(realTimeList[0]) * 3600000)
+                + (Integer.parseInt(realTimeList[1]) * 60000);
+
+        return (realMilis - theoricalMilis);
     }
 }

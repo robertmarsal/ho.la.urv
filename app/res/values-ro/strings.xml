@@ -21,8 +21,12 @@
     <string name="entry">Intrare</string>
     <string name="exit">Ieșire</string>
     <string name="menu_item_about">Despre</string>
+    <string name="menu_item_report">Raport săptămânal</string>
     <string name="about_idea">O idee de Robert Boloc &amp; Nur Ortega</string>
     <string name="about_robert">http://robertboloc.eu</string>
     <string name="about_nur">http://esnur.eu</string>
-
+    <string name="report_table_header_day">Zi</string>
+    <string name="report_table_header_theoretical">Teoretic</string>
+    <string name="report_table_header_real">Real</string>
+    <string name="report_table_header_balance">Balanța</string>
 </resources>

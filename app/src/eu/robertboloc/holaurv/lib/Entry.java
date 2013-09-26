@@ -1,5 +1,6 @@
 package eu.robertboloc.holaurv.lib;
 
+
 public class Entry {
 
     private String code;

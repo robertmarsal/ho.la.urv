@@ -29,7 +29,6 @@
         <item name="actionModeBackground">@drawable/cab_background_top_holaurv</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_holaurv</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Holaurv</item>
-
         
     </style>
 

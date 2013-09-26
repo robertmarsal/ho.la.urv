@@ -29,7 +29,7 @@
         <item name="android:actionModeBackground">@drawable/cab_background_top_holaurv</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_holaurv</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Holaurv</item>
-        
+        <item name="android:homeAsUpIndicator">@drawable/ic_ab_back_holo_dark</item>
         
     </style>
 
