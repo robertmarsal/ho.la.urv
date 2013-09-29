@@ -9,6 +9,7 @@
     <string name="alert_empty_credentials">Faltan credenciales!</string>
     <string name="alert_wrong_credentials">Credenciales incorrectas!</string>
     <string name="alert_no_network">No hay conexión de red disponible!</string>
+    <string name="alert_connection_problem">Error de connexión al servidor!</string>
     <string name="accumulated">Acumulado</string>
     <string name="monday">Lunes</string>
     <string name="tuesday">Martes</string>

@@ -16,24 +16,26 @@ import android.widget.TextView;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
+import eu.robertboloc.holaurv.lib.Day;
+import eu.robertboloc.holaurv.lib.Entry;
 import eu.robertboloc.holaurv.lib.Evalos;
 
 public class DayObjectFragment extends Fragment {
 
     public static final String ARG_OBJECT = "object";
 
-    private TextView mFirstEntry;
-    private TextView mFirstExit;
-    private TextView mSecondEntry;
-    private TextView mSecondExit;
-    private TextView mFirstAccumulate;
-    private TextView mSecondAccumulate;
+    TextView mFirstEntry;
+    TextView mFirstExit;
+    TextView mSecondEntry;
+    TextView mSecondExit;
+    TextView mFirstAccumulate;
+    TextView mSecondAccumulate;
 
-    private LinearLayout mDisplay;
+    LinearLayout mDisplay;
 
-    private LayoutInflater mInflater;
+    LayoutInflater mInflater;
 
-    private AdView adView;
+    AdView adView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,13 +61,13 @@ public class DayObjectFragment extends Fragment {
             startActivity(intent);
             getActivity().finish();
         } else {
-            refresh(eva, args.getInt(ARG_OBJECT));
+            refresh(eva.getDay(args.getInt(ARG_OBJECT)));
         }
 
         return rootView;
     }
 
-    protected void refresh(Evalos eva, int day) {
+    protected void refresh(Day day) {
 
         Period accumulate = null;
 
@@ -75,62 +77,50 @@ public class DayObjectFragment extends Fragment {
                 .appendSeparator("h").appendMinutes().appendLiteral("m")
                 .toFormatter();
 
-        // Accumulate formatter instance
-        PeriodFormatter DailyAccumulateFormatter = new PeriodFormatterBuilder()
-                .printZeroAlways().minimumPrintedDigits(2).appendHours()
-                .appendSeparator(":").appendMinutes().toFormatter();
-
         // First Entry
-        String firstEntry = eva.getFirstEntry(day);
-        if (!firstEntry.isEmpty()) {
+        if (day.getEntry(Entry.FIRST_ENTRY) != null) {
             mDisplay.addView(mInflater.inflate(R.layout.first_entry, mDisplay,
                     false));
             mFirstEntry = (TextView) mDisplay.findViewById(R.id.firstEntry);
-            mFirstEntry.setText(firstEntry);
+            mFirstEntry.setText(day.getEntry(Entry.FIRST_ENTRY)
+                    .getDisplayHourAndMinute());
         }
 
         // First Exit
-        String firstExit = eva.getFirstExit(day);
-        if (!firstEntry.isEmpty() && !firstExit.isEmpty()) {
+        if (day.getEntry(Entry.FIRST_EXIT) != null) {
             mDisplay.addView(mInflater.inflate(R.layout.first_exit, mDisplay,
                     false));
             mFirstExit = (TextView) mDisplay.findViewById(R.id.firstExit);
-            mFirstExit.setText(firstExit);
+            mFirstExit.setText(day.getEntry(Entry.FIRST_EXIT)
+                    .getDisplayHourAndMinute());
 
             // Compute the first accumulated
-            accumulate = eva.computePartialAcumulate(firstEntry, firstExit);
+            accumulate = day.getAccumulate(Entry.FIRST_ENTRY, Entry.FIRST_EXIT);
 
             mFirstAccumulate = (TextView) mDisplay
                     .findViewById(R.id.firstAccumulated);
             mFirstAccumulate.setText(HHMMSSFormater.print(accumulate));
-
-            // Store the accumulate in case there is no other entry/exit
-            eva.setDailyAccumulate(day,
-                    DailyAccumulateFormatter.print(accumulate));
         }
 
         // Second Entry
-        String secondEntry = eva.getSecondEntry(day);
-        if (!firstEntry.isEmpty() && !firstExit.isEmpty()
-                && !secondEntry.isEmpty()) {
+        if (day.getEntry(Entry.SECOND_ENTRY) != null) {
             mDisplay.addView(mInflater.inflate(R.layout.second_entry, mDisplay,
                     false));
             mSecondEntry = (TextView) mDisplay.findViewById(R.id.secondEntry);
-            mSecondEntry.setText(secondEntry);
+            mSecondEntry.setText(day.getEntry(Entry.SECOND_ENTRY)
+                    .getDisplayHourAndMinute());
         }
 
         // Second Exit
-        String secondExit = eva.getSecondExit(day);
-        if (!firstEntry.isEmpty() && !firstExit.isEmpty()
-                && !secondEntry.isEmpty() && !secondExit.isEmpty()) {
+        if (day.getEntry(Entry.SECOND_EXIT) != null) {
             mDisplay.addView(mInflater.inflate(R.layout.second_exit, mDisplay,
                     false));
             mSecondExit = (TextView) mDisplay.findViewById(R.id.secondExit);
-            mSecondExit.setText(secondExit);
+            mSecondExit.setText(day.getEntry(Entry.SECOND_EXIT)
+                    .getDisplayHourAndMinute());
 
-            // Compute the second accumulated
-            Period secondAccumulate = eva.computePartialAcumulate(secondEntry,
-                    secondExit);
+            Period secondAccumulate = day.getAccumulate(Entry.SECOND_ENTRY,
+                    Entry.SECOND_EXIT);
 
             accumulate = accumulate.plusHours(secondAccumulate.getHours())
                     .plusMinutes(secondAccumulate.getMinutes()).toPeriod();
@@ -139,10 +129,6 @@ public class DayObjectFragment extends Fragment {
                     .findViewById(R.id.secondAccumulate);
 
             mSecondAccumulate.setText(HHMMSSFormater.print(accumulate));
-
-            // Replace the store daily accumulate as we have a second entry/exit
-            eva.setDailyAccumulate(day,
-                    DailyAccumulateFormatter.print(accumulate));
         }
 
         // Insert the add

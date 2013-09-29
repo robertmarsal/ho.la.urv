@@ -1,7 +1,5 @@
 package eu.robertboloc.holaurv;
 
-import org.joda.time.DateTime;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +15,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
+import eu.robertboloc.holaurv.lib.Day;
 import eu.robertboloc.holaurv.lib.TypefaceSpan;
 
 public class DisplayActivity extends SherlockFragmentActivity implements
@@ -30,8 +29,6 @@ public class DisplayActivity extends SherlockFragmentActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
-
-        DateTime date = org.joda.time.DateTime.now();
 
         mDayCollectionPagerAdapter = new DayCollectionPagerAdapter(
                 getSupportFragmentManager(), this);
@@ -68,7 +65,7 @@ public class DisplayActivity extends SherlockFragmentActivity implements
         }
 
         // Swipe to today
-        mViewPager.setCurrentItem(date.getDayOfWeek() - 1);
+        mViewPager.setCurrentItem(Day.today());
     }
 
     @Override

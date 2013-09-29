@@ -9,6 +9,7 @@
     <string name="alert_empty_credentials">Lipsesc date de conectare!</string>
     <string name="alert_wrong_credentials">Datele de conectare nu sunt corecte!</string>
     <string name="alert_no_network">Nici o conexiune de rețea disponibilă!</string>
+    <string name="alert_connection_problem">Eroare de conectare la server!</string>
     <string name="accumulated">Acumulat</string>
     <string name="monday">Luni</string>
     <string name="tuesday">Marți</string>

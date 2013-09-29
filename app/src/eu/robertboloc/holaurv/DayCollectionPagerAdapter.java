@@ -6,16 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
+import eu.robertboloc.holaurv.lib.Day;
 
 public class DayCollectionPagerAdapter extends FragmentStatePagerAdapter {
-
-    public static final int MONDAY = 1;
-    public static final int TUESDAY = 2;
-    public static final int WEDNESDAY = 3;
-    public static final int THURSDAY = 4;
-    public static final int FRIDAY = 5;
-    public static final int SATURDAY = 6;
-    public static final int SUNDAY = 7;
 
     public final SparseArray<String> daysOfWeek = new SparseArray<String>();
 
@@ -23,13 +16,13 @@ public class DayCollectionPagerAdapter extends FragmentStatePagerAdapter {
         super(fm);
 
         // Get the translations of the days of the week
-        daysOfWeek.put(MONDAY, ctx.getString(R.string.monday));
-        daysOfWeek.put(TUESDAY, ctx.getString(R.string.tuesday));
-        daysOfWeek.put(WEDNESDAY, ctx.getString(R.string.wednesday));
-        daysOfWeek.put(THURSDAY, ctx.getString(R.string.thursday));
-        daysOfWeek.put(FRIDAY, ctx.getString(R.string.friday));
-        daysOfWeek.put(SATURDAY, ctx.getString(R.string.saturday));
-        daysOfWeek.put(SUNDAY, ctx.getString(R.string.sunday));
+        daysOfWeek.put(Day.MONDAY, ctx.getString(R.string.monday));
+        daysOfWeek.put(Day.TUESDAY, ctx.getString(R.string.tuesday));
+        daysOfWeek.put(Day.WEDNESDAY, ctx.getString(R.string.wednesday));
+        daysOfWeek.put(Day.THURSDAY, ctx.getString(R.string.thursday));
+        daysOfWeek.put(Day.FRIDAY, ctx.getString(R.string.friday));
+        daysOfWeek.put(Day.SATURDAY, ctx.getString(R.string.saturday));
+        daysOfWeek.put(Day.SUNDAY, ctx.getString(R.string.sunday));
     }
 
     @Override
@@ -49,6 +42,6 @@ public class DayCollectionPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return daysOfWeek.get(position + 1);
+        return daysOfWeek.get(position);
     }
 }

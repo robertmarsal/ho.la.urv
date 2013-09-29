@@ -1,8 +1,7 @@
-package com.robertboloc.eu.holaurv.test;
+package eu.robertboloc.holaurv.test;
 
 import junit.framework.TestCase;
-
-import com.robertboloc.eu.holaurv.lib.Evalos;
+import eu.robertboloc.holaurv.lib.Evalos;
 
 public class EvalosTest extends TestCase {
 

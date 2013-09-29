@@ -9,7 +9,7 @@ import eu.robertboloc.holaurv.lib.Evalos;
 @EApplication
 public class HoLaURV extends Application {
 
-    private Evalos eva;
+    Evalos eva;
 
     public Evalos getEva() {
         return eva;

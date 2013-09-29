@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        ads:testDevices="TEST_EMULATOR|04A07A6F83A0F66849EA3DF11B50F45B"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="ca-app-pub-7425824729828943/8750728519"
         ads:loadAdOnCreate="true" />

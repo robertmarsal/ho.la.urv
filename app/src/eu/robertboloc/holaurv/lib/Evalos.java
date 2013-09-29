@@ -1,14 +1,6 @@
 package eu.robertboloc.holaurv.lib;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.joda.time.DateTime;
-import org.joda.time.Period;
-import org.joda.time.format.PeriodFormatter;
-import org.joda.time.format.PeriodFormatterBuilder;
 
 import com.gistlabs.mechanize.MechanizeAgent;
 import com.gistlabs.mechanize.document.Document;
@@ -20,226 +12,92 @@ import com.gistlabs.mechanize.document.html.query.HtmlQueryBuilder;
 
 public class Evalos {
 
-    private final MechanizeAgent agent;
-    private final Map dayActivity = new HashMap<Integer, List<Entry>>();
-    private List<HtmlElement> weekActivity;
-    private final String[] dailyAccumulates = new String[7];
-
-    private HtmlElements response;
-
-    private String title;
-    private final String username;
-    private final String password;
-
     /**
      * Evalos public base url.
      */
-    private final String WEB_APP_BASE_URL = "http://gestiodelapresencia.urv.cat/evalos/login.html";
-    private final String LOGIN_ERROR = "Error de Login";
+    static final String WEB_APP_BASE_URL = "http://gestiodelapresencia.urv.cat/evalos/login.html";
+
+    /**
+     * Title of the error of login page.
+     */
+    static final String LOGIN_ERROR = "Error de Login";
+
     /**
      * While testing replace PLACEHOLDER with value.
      */
-    private final String PLACEHOLDER = "";
+    static final String PLACEHOLDER = "";
+
+    /**
+     * If the login was OK this will be true.
+     */
+    boolean loginSuccess = false;
+
+    /**
+     * If the connection fails this will be true.
+     */
+    private boolean connectionProblem = false;
+
+    /**
+     * Stores the week activity.
+     */
+    final Week week = new Week();
+
+    /**
+     * Username.
+     */
+    final String username;
+
+    /**
+     * Password.
+     */
+    final String password;
 
     public Evalos(String username, String password) {
         this.username = username;
         this.password = password;
-
-        this.agent = new MechanizeAgent();
     }
 
     /**
-     * Obtains the internal code assigned to the user.
+     * Obtains the raw html of the data.
      * 
-     * @return String
+     * @return Evalos
      */
-    public String getCode() {
-        return response
-                .get(HtmlQueryBuilder.byWidth("143").and.byHeight("19").and
-                        .byClass("verdana10bold")).getText()
-                .replace("Codi:", "");
-    }
+    public Evalos login() {
+        try {
+            final MechanizeAgent agent = new MechanizeAgent();
+            final Document page = agent.get(WEB_APP_BASE_URL);
 
-    /**
-     * Returns the current day of the week shifted with one position.
-     * 
-     * @return int
-     */
-    public int getCustomIntDayOfTheWeek() {
-        DateTime date = org.joda.time.DateTime.now();
-        return date.getDayOfWeek() - 1;
-    }
+            Form form = page.form("form1");
+            form.get("username").set(username);
+            form.get("password").set(password);
 
-    /**
-     * Returns the day activity.
-     * 
-     * @return List<Entry>
-     */
-    private List<Entry> getDayActivity(int day) {
-        if (dayActivity.containsKey(day)) {
-            return (List<Entry>) dayActivity.get(day);
-        } else {
+            HtmlDocument document = form.submit();
 
-            HtmlElement today = getWeekActivity().get(day);
-            String rawActivity = today
-                    .get(HtmlQueryBuilder.byClass("verdana10").and
-                            .byWidth("149").and.byHeight("40"))
-                    .get(HtmlQueryBuilder.byTag("div")).getInnerHtml();
+            parseRawHtmlResponse(document);
 
-            String[] fragments = rawActivity.split(" ");
-
-            List<Entry> dayActivity = new ArrayList<Entry>();
-
-            for (int i = 0; i <= (fragments.length - 2); i = i + 2) {
-
-                Entry entryPrototype = new Entry();
-                entryPrototype.setTime(fragments[i]);
-                entryPrototype.setCode(fragments[i + 1]);
-
-                dayActivity.add(entryPrototype);
-            }
-
-            this.dayActivity.put(day, dayActivity);
-
-            return dayActivity;
-        }
-    }
-
-    /**
-     * Obtains the time of the first entry.
-     * 
-     * @return String
-     */
-    public String getFirstEntry(int day) {
-        List<Entry> dayActivity = getDayActivity(day);
-        if (dayActivity.size() > 0) {
-            return dayActivity.get(0).getTime();
-        } else
-            return PLACEHOLDER;
-    }
-
-    /**
-     * Obtains the code of the first entry.
-     * 
-     * @return String
-     */
-    // public String getFirstEntryCode() {
-    // List<Entry> dayActivity = getDayActivity(day);
-    // if (getDayActivity().size() > 0) {
-    // return getDayActivity().get(0).getCode();
-    // } else
-    // return PLACEHOLDER;
-    // }
-
-    /**
-     * Obtains the time of the first exit.
-     * 
-     * @return String
-     */
-    public String getFirstExit(int day) {
-        List<Entry> dayActivity = getDayActivity(day);
-        if (dayActivity.size() > 1) {
-            return dayActivity.get(1).getTime();
-        } else
-            return PLACEHOLDER;
-    }
-
-    /**
-     * Obtains the code of the first exit.
-     * 
-     * @return String
-     */
-    // public String getFirstExitCode() {
-    // if (getDayActivity().size() > 1) {
-    // return getDayActivity().get(1).getCode();
-    // } else
-    // return PLACEHOLDER;
-    // }
-
-    /**
-     * Obtains the full name of the user.
-     * 
-     * @return String
-     */
-    public String getName() {
-        return response
-                .get(HtmlQueryBuilder.byWidth("306").and.byHeight("19").and
-                        .byClass("verdana10bold")).getText()
-                .replace("Nom:", "").replace("\n", "").replace("\r", "").trim();
-    }
-
-    public HtmlElements getResponse() {
-        return response;
-    }
-
-    /**
-     * Obtains the time of the second entry.
-     * 
-     * @return String
-     */
-    public String getSecondEntry(int day) {
-        List<Entry> dayActivity = getDayActivity(day);
-        if (dayActivity.size() > 2) {
-            return dayActivity.get(2).getTime();
-        } else
-            return PLACEHOLDER;
-    }
-
-    /**
-     * Obtains the code of the second entry.
-     * 
-     * @return String
-     */
-    // public String getSecondEntryCode() {
-    // if (getDayActivity().size() > 2) {
-    // return getDayActivity().get(2).getCode();
-    // } else
-    // return PLACEHOLDER;
-    // }
-
-    /**
-     * Obtains the time of the second exit.
-     * 
-     * @return String
-     */
-    public String getSecondExit(int day) {
-        List<Entry> dayActivity = getDayActivity(day);
-        if (dayActivity.size() > 3) {
-            return dayActivity.get(3).getTime();
-        } else
-            return PLACEHOLDER;
-    }
-
-    /**
-     * Obtains the code of the second exit.
-     * 
-     * @return String
-     */
-    // public String getSecondExitCode() {
-    // if (getDayActivity().size() > 3) {
-    // return getDayActivity().get(3).getCode();
-    // } else
-    // return PLACEHOLDER;
-    // }
-
-    /**
-     * Obtains todays' shift.
-     * 
-     * @return String
-     */
-    public String getShift(int day) {
-        HtmlElement today = getWeekActivity().get(day);
-        String shift = today
-                .get(HtmlQueryBuilder.byClass("verdana12").and.byWidth("75").and
-                        .byHeight("40")).get(HtmlQueryBuilder.byTag("div"))
-                .getInnerHtml().replaceFirst("G-", "0")
-                .replaceFirst("Festiu", "");
-
-        if (shift.isEmpty()) {
-            return "";
+        } catch (Exception e) {
+            connectionProblem = true;
         }
 
-        return shift;
+        return this;
+    }
+
+    /**
+     * Returns true if login was successful.
+     * 
+     * @return boolean
+     */
+    public boolean loginSuccessful() {
+        return loginSuccess;
+    }
+
+    /**
+     * Returns true if there was a connection problem.
+     * 
+     * @return boolean
+     */
+    public boolean connectionProblem() {
+        return connectionProblem;
     }
 
     /**
@@ -252,102 +110,90 @@ public class Evalos {
     }
 
     /**
-     * Returns the week activity.
+     * Returns the requested day object. All days will exist (and be empty if
+     * the case does not proceed).
      * 
-     * @return List<HtmlElement>
+     * @param day
+     *            int
+     * @return Day
      */
-    private List<HtmlElement> getWeekActivity() {
-        if (weekActivity != null) {
-            return weekActivity;
+    public Day getDay(int day) {
+        return week.getDay(day);
+    }
+
+    /**
+     * Does the html parsing heavy-lifting.
+     * 
+     * @param document
+     *            HtmlDocument
+     * @return boolean
+     */
+    private boolean parseRawHtmlResponse(HtmlDocument document) {
+
+        // Check if the response was OK.
+        if (!document.getTitle().equals(LOGIN_ERROR)) {
+            loginSuccess = true;
         } else {
-
-            weekActivity = response.getAll(HtmlQueryBuilder.byTag("table").and
-                    .byWidth("680").and.byHeight("41").and.by("cellspacing",
-                    "0").and.by("cellpadding", "0"));
-        }
-
-        return weekActivity;
-    }
-
-    public Evalos login() {
-        try {
-            Document page = agent.get(WEB_APP_BASE_URL);
-
-            Form form = page.form("form1");
-            form.get("username").set(username);
-            form.get("password").set(password);
-
-            HtmlDocument document = form.submit();
-
-            title = document.getTitle();
-            response = document.htmlElements();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return this;
-    }
-
-    public boolean loginSuccessful() {
-
-        if (title.equals(this.LOGIN_ERROR)) {
+            // Do nothing else.
             return false;
         }
 
-        return true;
-    }
+        // We have a correct response, parse it.
+        HtmlElements response = document.htmlElements();
 
-    public void setDailyAccumulate(int day, String accumulate) {
-        this.dailyAccumulates[day] = accumulate;
-    }
+        List<HtmlElement> weekHtmlElements = response.getAll(HtmlQueryBuilder
+                .byTag("table").and.byWidth("680").and.byHeight("41").and.by(
+                "cellspacing", "0").and.by("cellpadding", "0"));
 
-    public String getDailyAccumulate(int day) {
-        if (this.dailyAccumulates[day] != null) {
-            return this.dailyAccumulates[day];
-        } else {
-            if (!getFirstEntry(day).isEmpty()) {
+        // Parse the week html and store it as Day objects in the week attribute
+        if (!weekHtmlElements.isEmpty()) {
+            Day dayPrototype = new Day();
+            int dayOfWeek = 0;
 
-                PeriodFormatter DailyAccumulateFormatter = new PeriodFormatterBuilder()
-                        .printZeroAlways().minimumPrintedDigits(2)
-                        .appendHours().appendSeparator(":").appendMinutes()
-                        .toFormatter();
+            // Iterate over the days until the current day.
+            for (HtmlElement dayHtmlElement : weekHtmlElements) {
+                // If today is greater than the current iteration do nothing
+                // but store an empty day in the week.
+                if (dayOfWeek <= Day.today()) {
+                    dayPrototype = new Day();
 
-                Period accumulate = this.computePartialAcumulate(
-                        getFirstEntry(day), getFirstExit(day));
+                    // Parse shift data
+                    dayPrototype.setShiftRaw(dayHtmlElement
+                            .get(HtmlQueryBuilder.byClass("verdana12").and
+                                    .byWidth("75").and.byHeight("40"))
+                            .get(HtmlQueryBuilder.byTag("div")).getInnerHtml());
 
-                if (!getSecondEntry(day).isEmpty()) {
-                    Period secondAccumulate = this.computePartialAcumulate(
-                            getSecondEntry(day), getSecondExit(day));
+                    // Parse entries data
+                    String rawActivity = dayHtmlElement
+                            .get(HtmlQueryBuilder.byClass("verdana10").and
+                                    .byWidth("149").and.byHeight("40"))
+                            .get(HtmlQueryBuilder.byTag("div")).getInnerHtml();
 
-                    accumulate = accumulate.plusHours(
-                            secondAccumulate.getHours()).plusMinutes(
-                            secondAccumulate.getMinutes());
+                    String[] fragments = rawActivity.split(" ");
+
+                    Entry entryPrototype = new Entry();
+
+                    // Iterate over the entries and add them to the day
+                    for (int i = 0; i <= (fragments.length - 2); i = i + 2) {
+
+                        entryPrototype = new Entry();
+
+                        String[] entryTimeList = fragments[i].split(":");
+                        entryPrototype.setHourRaw(entryTimeList[0]);
+                        entryPrototype.setMinuteRaw(entryTimeList[1]);
+
+                        entryPrototype.setCode(fragments[i + 1]);
+
+                        dayPrototype.addEntry(entryPrototype);
+                    }
                 }
 
-                return this.dailyAccumulates[day] = DailyAccumulateFormatter
-                        .print(accumulate);
+                week.setDay(dayOfWeek, dayPrototype);
+                dayOfWeek++;
             }
         }
 
-        return "-";
-    }
-
-    public Period computePartialAcumulate(String entry, String exit) {
-
-        String[] entryTimeList = entry.split(":");
-        int entryHour = Integer.parseInt(entryTimeList[0]);
-        int entryMinute = Integer.parseInt(entryTimeList[1]);
-
-        String[] exitTimeList = exit.split(":");
-        int exitHour = Integer.parseInt(exitTimeList[0]);
-        int exitMinute = Integer.parseInt(exitTimeList[1]);
-
-        DateTime entryDateTime = new DateTime(2000, 1, 1, entryHour,
-                entryMinute);
-        DateTime exitDateTime = new DateTime(2000, 1, 1, exitHour, exitMinute);
-
-        return new Period(entryDateTime, exitDateTime);
+        return true;
     }
 
     public long computeBalance(String theorical, String real) {

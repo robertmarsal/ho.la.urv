@@ -27,7 +27,7 @@ public class LoginActivity extends Activity {
 
     public static final String HOLAURV_PREFS = "holaurvprefs";
 
-    private SharedPreferences appSettings;
+    SharedPreferences appSettings;
 
     @ViewById(R.id.screenLogger)
     TextView mScreenLogger;
@@ -96,8 +96,16 @@ public class LoginActivity extends Activity {
                 startActivity(new Intent(LoginActivity.this,
                         DisplayActivity.class));
             } else {
-                mScreenLogger
-                        .setText(getText(R.string.alert_wrong_credentials));
+
+                if (result.connectionProblem()) {
+                    // There is a problem with the connection.
+                    mScreenLogger
+                            .setText(getText(R.string.alert_connection_problem));
+                } else {
+                    // The credentials are wrong.
+                    mScreenLogger
+                            .setText(getText(R.string.alert_wrong_credentials));
+                }
             }
         }
     }
