@@ -23,10 +23,21 @@ public class Day {
      */
     final List<Entry> entries = new ArrayList<Entry>();
 
+    /**
+     * Returns the shift in display mode XX:XX
+     * 
+     * @return String
+     */
     public String getShiftDisplay() {
         return shiftRaw.replace("Festiu", "").replace("G-", "");
     }
 
+    /**
+     * Updates the shiftRaw value.
+     * 
+     * @param shiftRaw
+     *            String
+     */
     public void setShiftRaw(String shiftRaw) {
         this.shiftRaw = shiftRaw;
     }

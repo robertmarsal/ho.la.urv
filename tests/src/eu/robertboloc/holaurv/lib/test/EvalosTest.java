@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv.test;
+package eu.robertboloc.holaurv.lib.test;
 
 import junit.framework.TestCase;
 import eu.robertboloc.holaurv.lib.Evalos;
