@@ -105,8 +105,9 @@ public class Day {
                     Entry.SECOND_EXIT);
 
             if (secondAccumulate != null) {
-                firstAccumulate.plusHours(secondAccumulate.getHours())
-                        .plusMinutes(secondAccumulate.getMinutes());
+                firstAccumulate = firstAccumulate.plusHours(
+                        secondAccumulate.getHours()).plusMinutes(
+                        secondAccumulate.getMinutes());
             }
 
             return firstAccumulate;

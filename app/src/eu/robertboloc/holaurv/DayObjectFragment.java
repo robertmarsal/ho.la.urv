@@ -61,7 +61,12 @@ public class DayObjectFragment extends Fragment {
             startActivity(intent);
             getActivity().finish();
         } else {
-            refresh(eva.getDay(args.getInt(ARG_OBJECT)));
+            // If the day is greater than today, then just load the ad
+            if (args.getInt(ARG_OBJECT) > Day.today()) {
+                adView.loadAd(new AdRequest());
+            } else {
+                refresh(eva.getDay(args.getInt(ARG_OBJECT)));
+            }
         }
 
         return rootView;
