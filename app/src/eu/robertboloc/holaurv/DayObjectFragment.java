@@ -128,7 +128,8 @@ public class DayObjectFragment extends Fragment {
                     Entry.SECOND_EXIT);
 
             accumulate = accumulate.plusHours(secondAccumulate.getHours())
-                    .plusMinutes(secondAccumulate.getMinutes()).toPeriod();
+                    .plusMinutes(secondAccumulate.getMinutes()).toPeriod()
+                    .normalizedStandard();
 
             mSecondAccumulate = (TextView) mDisplay
                     .findViewById(R.id.secondAccumulate);

@@ -23,20 +23,20 @@ public class DayTest extends TestCase {
         testDay = new Day();
 
         // Set up first entry
-        firstEntry.setHourRaw("08");
-        firstEntry.setMinuteRaw("15");
+        firstEntry.setHourRaw("07");
+        firstEntry.setMinuteRaw("52");
 
         // Set up first exit
         firstExit.setHourRaw("14");
-        firstExit.setMinuteRaw("01");
+        firstExit.setMinuteRaw("28");
 
         // Set up second entry
-        secondEntry.setHourRaw("15");
-        secondEntry.setMinuteRaw("01");
+        secondEntry.setHourRaw("14");
+        secondEntry.setMinuteRaw("56");
 
         // Set up second exit
-        secondExit.setHourRaw("18");
-        secondExit.setMinuteRaw("01");
+        secondExit.setHourRaw("17");
+        secondExit.setMinuteRaw("40");
     }
 
     @Override
@@ -70,9 +70,9 @@ public class DayTest extends TestCase {
         Period firstPeriod = testDay.getAccumulate(Entry.FIRST_ENTRY,
                 Entry.FIRST_EXIT);
 
-        // From 08:15 to 14:01 -> 5 hours and 46 minutes
-        assertEquals(5, firstPeriod.getHours());
-        assertEquals(46, firstPeriod.getMinutes());
+        // From 07:52 to 14:28 -> 6 hours and 36 minutes
+        assertEquals(6, firstPeriod.getHours());
+        assertEquals(36, firstPeriod.getMinutes());
     }
 
     public void testGetAccumulateWithParamsSecond() {
@@ -85,9 +85,9 @@ public class DayTest extends TestCase {
         Period secondPeriod = testDay.getAccumulate(Entry.SECOND_ENTRY,
                 Entry.SECOND_EXIT);
 
-        // From 15:01 to 18:01 -> 3 hours and 0 minutes
-        assertEquals(3, secondPeriod.getHours());
-        assertEquals(0, secondPeriod.getMinutes());
+        // From 14:56 to 17:40 -> 2 hours and 44 minutes
+        assertEquals(2, secondPeriod.getHours());
+        assertEquals(44, secondPeriod.getMinutes());
     }
 
     public void testGetAccumulateNoParams() {
@@ -99,8 +99,8 @@ public class DayTest extends TestCase {
 
         Period dayAccumulatePeriod = testDay.getAccumulate();
 
-        // From 08:15 to 18:01 -> 8 hours and 46 minutes
-        assertEquals(8, dayAccumulatePeriod.getHours());
-        assertEquals(46, dayAccumulatePeriod.getMinutes());
+        // From 07:52 to 17:40 -> 9 hours and 20 minutes
+        assertEquals(9, dayAccumulatePeriod.getHours());
+        assertEquals(20, dayAccumulatePeriod.getMinutes());
     }
 }

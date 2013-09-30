@@ -84,7 +84,7 @@ public class Day {
             DateTime exitDateTime = new DateTime(2000, 1, 1, getEntry(exit)
                     .getHour(), getEntry(exit).getMinute());
 
-            return new Period(entryDateTime, exitDateTime);
+            return new Period(entryDateTime, exitDateTime).normalizedStandard();
         }
 
         return null;
@@ -110,7 +110,8 @@ public class Day {
                         secondAccumulate.getMinutes());
             }
 
-            return firstAccumulate;
+            // Always normalize
+            return firstAccumulate.normalizedStandard();
         }
 
         return null;

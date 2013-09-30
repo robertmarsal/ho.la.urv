@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.robertboloc.holaurv"
     android:installLocation="auto"
-    android:versionCode="2"
-    android:versionName="1.0.1 White Russian" >
+    android:versionCode="3"
+    android:versionName="1.2.0 Bloody Mary" >
 
     <uses-sdk
         android:minSdkVersion="9"
