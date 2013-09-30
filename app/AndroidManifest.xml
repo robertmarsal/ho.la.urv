@@ -30,7 +30,7 @@
         <activity
             android:name="eu.robertboloc.holaurv.DisplayActivity"
             android:theme="@style/Theme.Holaurv" />
-        <activity android:name="eu.robertboloc.holaurv.AboutActivity" />
+        <activity android:name="eu.robertboloc.holaurv.AboutActivity_" />
         <activity
             android:name="eu.robertboloc.holaurv.ReportActivity"
             android:parentActivityName="eu.robertboloc.holaurv.DisplayActivity"

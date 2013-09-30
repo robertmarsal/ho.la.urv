@@ -91,7 +91,7 @@ public class DisplayActivity extends SherlockFragmentActivity implements
             startActivity(new Intent(this, ReportActivity.class));
             return true;
         case 1:
-            startActivity(new Intent(this, AboutActivity.class));
+            startActivity(new Intent(this, AboutActivity_.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);

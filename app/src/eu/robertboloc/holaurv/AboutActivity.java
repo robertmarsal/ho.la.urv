@@ -3,32 +3,31 @@ package eu.robertboloc.holaurv;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
-import eu.robertboloc.holaurv.R;
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
 
+@EActivity(R.layout.activity_about)
 public class AboutActivity extends Activity {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+    @ViewById(R.id.aboutBrand)
+    TextView mAboutBrand;
 
-        TextView mAboutBrand = (TextView) findViewById(R.id.aboutBrand);
-
+    @AfterViews
+    void styleBrand() {
         // Set brand text
         Spannable wordToSpan = new SpannableString(getText(R.string.brand));
         wordToSpan.setSpan(new ForegroundColorSpan(Color.BLACK), 3, 6,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         mAboutBrand.setText(wordToSpan);
 
-        // Set logo font
-        Typeface font = Typeface.createFromAsset(getAssets(),
-                "Exo-ExtraBold.ttf");
-        mAboutBrand.setTypeface(font);
+        // Set brand font
+        mAboutBrand.setTypeface(Typeface.createFromAsset(getAssets(),
+                "Exo-ExtraBold.ttf"));
     }
 }
