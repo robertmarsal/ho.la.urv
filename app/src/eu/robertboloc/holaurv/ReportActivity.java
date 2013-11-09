@@ -262,6 +262,10 @@ public class ReportActivity extends SherlockFragmentActivity {
     public String milisToDisplayTime(long milis) {
         Duration duration = new Duration(milis);
         String hours = String.valueOf(Math.abs(duration.getStandardHours()));
+
+        // Now remove the value of the hours from the duration
+        duration = duration.minus(duration.getStandardHours() * 3600000);
+
         String minutes = String
                 .valueOf(Math.abs(duration.getStandardMinutes()));
 

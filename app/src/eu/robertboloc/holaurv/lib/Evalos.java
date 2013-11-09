@@ -199,12 +199,12 @@ public class Evalos {
     public long computeBalance(String theorical, String real) {
 
         String[] theoricalTimeList = theorical.split(":");
-        // Convert hours and seconds to milis
+        // Convert hours and minutes to milis
         int theoricalMilis = (Integer.parseInt(theoricalTimeList[0]) * 3600000)
                 + (Integer.parseInt(theoricalTimeList[1]) * 60000);
 
         String[] realTimeList = real.split(":");
-        // Convert hours and seconds to milis
+        // Convert hours and minutes to milis
         int realMilis = (Integer.parseInt(realTimeList[0]) * 3600000)
                 + (Integer.parseInt(realTimeList[1]) * 60000);
 
