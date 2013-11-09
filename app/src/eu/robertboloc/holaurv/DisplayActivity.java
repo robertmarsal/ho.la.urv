@@ -39,16 +39,24 @@ public class DisplayActivity extends SherlockFragmentActivity implements
         actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        // Set custom font and colors to the Action Bar
-        SpannableString s = new SpannableString(getText(R.string.brand));
-        s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(),
-                Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        s.setSpan(new ForegroundColorSpan(Color.BLACK), 3, 6,
-                Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        s.setSpan(new TypefaceSpan(this, "Exo-ExtraBold"), 0, s.length(),
-                Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
+        boolean isLandscape = getResources().getBoolean(R.bool.isLandscape);
 
-        actionBar.setTitle(s);
+        if (isTablet != true && isLandscape != true) {
+            // Set custom font and colors to the Action Bar
+            SpannableString s = new SpannableString(getText(R.string.brand));
+            s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(),
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            s.setSpan(new ForegroundColorSpan(Color.BLACK), 3, 6,
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            s.setSpan(new TypefaceSpan(this, "Exo-ExtraBold"), 0, s.length(),
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+            actionBar.setTitle(s);
+        } else {
+            // Remove title on landscape tables as it gets cut off
+            actionBar.setTitle("");
+        }
 
         mViewPager
                 .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
