@@ -8,6 +8,7 @@ import org.joda.time.format.DateTimeFormatterBuilder;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -126,6 +127,17 @@ public class ReportActivity extends SherlockFragmentActivity {
         HoLaURV appState = ((HoLaURV) getApplicationContext());
         Evalos eva = appState.getEva();
 
+        // In case the app was killed by the OS
+        if (!(eva instanceof Evalos)) {
+            Intent intent = new Intent(this, LoginActivity_.class);
+            startActivity(intent);
+            this.finish();
+        } else {
+            refresh(eva);
+        }
+    }
+
+    private void refresh(Evalos eva) {
         PeriodFormatter HHMMFormater = new PeriodFormatterBuilder()
                 .printZeroAlways().minimumPrintedDigits(2).appendHours()
                 .appendSeparator(":").appendMinutes().toFormatter();
