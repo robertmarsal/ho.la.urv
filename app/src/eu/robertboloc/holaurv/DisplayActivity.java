@@ -14,6 +14,7 @@ import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import eu.robertboloc.holaurv.lib.Day;
 import eu.robertboloc.holaurv.lib.TypefaceSpan;
@@ -119,4 +120,15 @@ public class DisplayActivity extends SherlockFragmentActivity implements
     public void onTabReselected(Tab tab, FragmentTransaction ft) {
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);
+    }
 }
