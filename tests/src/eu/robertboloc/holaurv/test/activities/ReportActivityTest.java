@@ -1,7 +1,7 @@
-package eu.robertboloc.holaurv.test;
+package eu.robertboloc.holaurv.test.activities;
 
 import junit.framework.TestCase;
-import eu.robertboloc.holaurv.ReportActivity;
+import eu.robertboloc.holaurv.activities.ReportActivity;
 
 public class ReportActivityTest extends TestCase {
 

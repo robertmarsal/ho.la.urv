@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv;
+package eu.robertboloc.holaurv.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
-import eu.robertboloc.holaurv.lib.Day;
+import eu.robertboloc.holaurv.R;
+import eu.robertboloc.holaurv.fragments.DayObjectFragment;
+import eu.robertboloc.holaurv.models.Day;
 
 public class DayCollectionPagerAdapter extends FragmentStatePagerAdapter {
 

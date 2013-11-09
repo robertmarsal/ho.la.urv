@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv;
+package eu.robertboloc.holaurv.activities;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
@@ -22,9 +22,11 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.analytics.tracking.android.EasyTracker;
 
-import eu.robertboloc.holaurv.lib.Day;
-import eu.robertboloc.holaurv.lib.Evalos;
-import eu.robertboloc.holaurv.lib.TypefaceSpan;
+import eu.robertboloc.holaurv.HoLaURV;
+import eu.robertboloc.holaurv.R;
+import eu.robertboloc.holaurv.helpers.Evalos;
+import eu.robertboloc.holaurv.helpers.TypefaceSpan;
+import eu.robertboloc.holaurv.models.Day;
 
 public class ReportActivity extends SherlockFragmentActivity {
 

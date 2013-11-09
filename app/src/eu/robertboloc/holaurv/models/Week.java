@@ -1,4 +1,5 @@
-package eu.robertboloc.holaurv.lib;
+package eu.robertboloc.holaurv.models;
+
 
 public class Week {
 

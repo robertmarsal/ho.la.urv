@@ -1,11 +1,11 @@
-package eu.robertboloc.holaurv.lib.test;
+package eu.robertboloc.holaurv.test.models;
 
 import junit.framework.TestCase;
 
 import org.joda.time.Period;
 
-import eu.robertboloc.holaurv.lib.Day;
-import eu.robertboloc.holaurv.lib.Entry;
+import eu.robertboloc.holaurv.models.Day;
+import eu.robertboloc.holaurv.models.Entry;
 
 public class DayTest extends TestCase {
 

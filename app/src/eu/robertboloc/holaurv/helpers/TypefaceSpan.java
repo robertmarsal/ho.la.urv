@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv.lib;
+package eu.robertboloc.holaurv.helpers;
 
 import android.content.Context;
 import android.graphics.Paint;

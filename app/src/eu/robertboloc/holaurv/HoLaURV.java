@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.googlecode.androidannotations.annotations.EApplication;
 
-import eu.robertboloc.holaurv.lib.Evalos;
+import eu.robertboloc.holaurv.helpers.Evalos;
 
 @EApplication
 public class HoLaURV extends Application {

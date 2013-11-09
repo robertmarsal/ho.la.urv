@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv;
+package eu.robertboloc.holaurv.fragments;
 
 import org.joda.time.Period;
 import org.joda.time.format.PeriodFormatter;
@@ -16,9 +16,12 @@ import android.widget.TextView;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
-import eu.robertboloc.holaurv.lib.Day;
-import eu.robertboloc.holaurv.lib.Entry;
-import eu.robertboloc.holaurv.lib.Evalos;
+import eu.robertboloc.holaurv.HoLaURV;
+import eu.robertboloc.holaurv.R;
+import eu.robertboloc.holaurv.activities.LoginActivity_;
+import eu.robertboloc.holaurv.helpers.Evalos;
+import eu.robertboloc.holaurv.models.Day;
+import eu.robertboloc.holaurv.models.Entry;
 
 public class DayObjectFragment extends Fragment {
 

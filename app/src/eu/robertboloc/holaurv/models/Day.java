@@ -1,10 +1,11 @@
-package eu.robertboloc.holaurv.lib;
+package eu.robertboloc.holaurv.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
+
 
 public class Day {
 

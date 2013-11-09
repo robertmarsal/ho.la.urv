@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv;
+package eu.robertboloc.holaurv.activities;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -12,6 +12,8 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
+
+import eu.robertboloc.holaurv.R;
 
 @EActivity(R.layout.activity_about)
 public class AboutActivity extends Activity {

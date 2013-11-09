@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv.lib;
+package eu.robertboloc.holaurv.helpers;
 
 import java.util.List;
 
@@ -9,6 +9,10 @@ import com.gistlabs.mechanize.document.html.HtmlElement;
 import com.gistlabs.mechanize.document.html.HtmlElements;
 import com.gistlabs.mechanize.document.html.form.Form;
 import com.gistlabs.mechanize.document.html.query.HtmlQueryBuilder;
+
+import eu.robertboloc.holaurv.models.Day;
+import eu.robertboloc.holaurv.models.Entry;
+import eu.robertboloc.holaurv.models.Week;
 
 public class Evalos {
 

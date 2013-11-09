@@ -1,4 +1,4 @@
-package eu.robertboloc.holaurv;
+package eu.robertboloc.holaurv.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,8 +16,10 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.analytics.tracking.android.EasyTracker;
 
-import eu.robertboloc.holaurv.lib.Day;
-import eu.robertboloc.holaurv.lib.TypefaceSpan;
+import eu.robertboloc.holaurv.R;
+import eu.robertboloc.holaurv.adapters.DayCollectionPagerAdapter;
+import eu.robertboloc.holaurv.helpers.TypefaceSpan;
+import eu.robertboloc.holaurv.models.Day;
 
 public class DisplayActivity extends SherlockFragmentActivity implements
         com.actionbarsherlock.app.ActionBar.TabListener {

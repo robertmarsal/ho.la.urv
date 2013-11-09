@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,7 +19,7 @@
         android:label="@string/brand"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="eu.robertboloc.holaurv.LoginActivity_"
+            android:name="eu.robertboloc.holaurv.activities.LoginActivity_"
             android:label="@string/brand" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,16 +28,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="eu.robertboloc.holaurv.DisplayActivity"
+            android:name="eu.robertboloc.holaurv.activities.DisplayActivity"
             android:theme="@style/Theme.Holaurv" />
-        <activity android:name="eu.robertboloc.holaurv.AboutActivity_" />
+        <activity android:name="eu.robertboloc.holaurv.activities.AboutActivity_" />
         <activity
-            android:name="eu.robertboloc.holaurv.ReportActivity"
-            android:parentActivityName="eu.robertboloc.holaurv.DisplayActivity"
+            android:name="eu.robertboloc.holaurv.activities.ReportActivity"
+            android:parentActivityName="eu.robertboloc.holaurv.activities.DisplayActivity"
             android:theme="@style/Theme.Holaurv" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="eu.robertboloc.holaurv.DisplayActivity" />
+                android:value="eu.robertboloc.holaurv.activities.DisplayActivity" />
         </activity>
         <activity
             android:name="com.google.ads.AdActivity"
