@@ -56,11 +56,15 @@ public class DayTest extends TestCase {
         // Test what happens on a normal day
         testDay.setShiftRaw("G-09:00");
         assertEquals("09:00", testDay.getShiftDisplay());
+
+        // Test with extra case
+        testDay.setShiftRaw("F-07:00");
+        assertEquals("07:00", testDay.getShiftDisplay());
     }
 
     public void testSetShiftRaw() {
-        testDay.setShiftRaw("test");
-        assertEquals("test", testDay.getShiftDisplay());
+        testDay.setShiftRaw("07:00");
+        assertEquals("07:00", testDay.getShiftDisplay());
     }
 
     public void testGetAccumulateWithParamsFirst() {

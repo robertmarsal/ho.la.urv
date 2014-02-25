@@ -6,7 +6,6 @@ import java.util.List;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
-
 public class Day {
 
     public static final int MONDAY = 0;
@@ -30,7 +29,7 @@ public class Day {
      * @return String
      */
     public String getShiftDisplay() {
-        return shiftRaw.replace("Festiu", "").replace("G-", "");
+        return shiftRaw.replaceAll("[^0-9:]", "");
     }
 
     /**
