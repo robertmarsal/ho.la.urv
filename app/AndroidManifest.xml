@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.robertboloc.holaurv"
     android:installLocation="auto"
-    android:versionCode="4"
-    android:versionName="1.2.1 Bloody Mary" >
+    android:versionCode="5"
+    android:versionName="1.2.2 Bloody Mary" >
 
     <uses-sdk
         android:minSdkVersion="9"
