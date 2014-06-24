@@ -1,6 +1,6 @@
 # Ho.La.URV
 
-An android application for checking the presence management system of the Rovira i Virgily University  
+An android application for checking the presence management system of the Rovira i Virgili University  
 
 ## Table of contents
 - [Features](#Features)
