@@ -12,10 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
-
 import eu.robertboloc.holaurv.HoLaURV;
 import eu.robertboloc.holaurv.R;
 import eu.robertboloc.holaurv.activities.LoginActivity_;
@@ -38,8 +34,6 @@ public class DayObjectFragment extends Fragment {
 
     LayoutInflater mInflater;
 
-    AdView adView;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -50,7 +44,6 @@ public class DayObjectFragment extends Fragment {
                 container, false);
 
         mDisplay = (LinearLayout) rootView.findViewById(R.id.display);
-        adView = (AdView) rootView.findViewById(R.id.adView);
 
         Bundle args = getArguments();
 
@@ -65,9 +58,7 @@ public class DayObjectFragment extends Fragment {
             getActivity().finish();
         } else {
             // If the day is greater than today, then just load the ad
-            if (args.getInt(ARG_OBJECT) > Day.today()) {
-                adView.loadAd(new AdRequest());
-            } else {
+            if (args.getInt(ARG_OBJECT) < Day.today()) {
                 refresh(eva.getDay(args.getInt(ARG_OBJECT)));
             }
         }
@@ -139,8 +130,5 @@ public class DayObjectFragment extends Fragment {
 
             mSecondAccumulate.setText(HHMMSSFormater.print(accumulate));
         }
-
-        // Insert the add
-        adView.loadAd(new AdRequest());
     }
 }

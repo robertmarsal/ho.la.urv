@@ -7,9 +7,7 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/adView" >
-
+        android:layout_height="fill_parent">
         <LinearLayout
             android:id="@+id/display"
             android:layout_width="fill_parent"
@@ -23,14 +21,4 @@
             tools:context=".DisplayActivity" >
         </LinearLayout>
     </ScrollView>
-
-    <com.google.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-7425824729828943/8750728519"
-        ads:loadAdOnCreate="true" />
-
 </RelativeLayout>
