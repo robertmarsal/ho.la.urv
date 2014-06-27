@@ -2,6 +2,8 @@
 
 An android application for checking the presence management system of the Rovira i Virgili University  
 
+![Ho.La.URV](app/assets/preview.png)
+
 ## Table of contents
 - [Features](#Features)
 - [Roadmap](#Roadmap)
@@ -15,7 +17,7 @@ An android application for checking the presence management system of the Rovira
 * The password is not stored on the mobile device (safety)
 * Compatibility with Android 2.3 and superior
 
-## Roadmad
+## Roadmap
 
 If you want to contribute to the development of this application these are some of the tasks that need to be done:
 
