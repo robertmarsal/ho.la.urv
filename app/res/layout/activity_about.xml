@@ -52,6 +52,15 @@
             android:text="@string/about_nur"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColorLink="@color/urvPink" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/about_version"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/urvGray" />
+
     </LinearLayout>
 
 </RelativeLayout>

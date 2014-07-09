@@ -26,6 +26,7 @@
     <string name="about_idea">An idea by Robert Boloc &amp; Nur Ortega</string>
     <string name="about_robert">http://robertboloc.eu</string>
     <string name="about_nur">http://esnur.eu</string>
+    <string name="about_version">v1.3.0 Cuba Libre (6)</string>
     <string name="report_table_header_day">Day</string>
     <string name="report_table_header_theoretical">Theoretical</string>
     <string name="report_table_header_real">Real</string>
