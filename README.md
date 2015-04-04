@@ -1,5 +1,5 @@
 # Ho.La.URV
-[![GitHub version](https://badge.fury.io/gh/robertboloc%2Fho.la.urv.svg)](http://badge.fury.io/gh/robertboloc%2Fho.la.urv)
+[![Version](https://img.shields.io/badge/version-1.3.0-green.svg?style=flat-square)](https://github.com/robertboloc/ho.la.urv)
 
 An android application for checking the presence management system of the Rovira i Virgili University  
 
