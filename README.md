@@ -8,8 +8,6 @@ An android application for checking the presence management system of the Rovira
 ## Table of contents
 - [Features](#Features)
 - [Dependencies](#Dependencies)
-- [Roadmap](#Roadmap)
-
 
 ## Features
 
@@ -26,11 +24,5 @@ An android application for checking the presence management system of the Rovira
 * [JodaTime 2.2.0](http://www.joda.org/joda-time/)
 * [Jsoup 1.7.2](http://jsoup.org/)
 * [Mechanize 0.11.0](https://github.com/GistLabs/mechanize)
-
-## Roadmap
-
-If you want to contribute to the development of this application these are some of the tasks that need to be done:
-
-* Switch the build process to Gradle
 
 *[![Get it on Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=eu.robertboloc.holaurv)*
